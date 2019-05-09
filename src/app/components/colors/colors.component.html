@@ -1,0 +1,10 @@
+<h3>Cores</h3>
+
+<div class="row  d-flex justify-content-around ">
+  <div *ngFor="let cor of cores"  class="col-3 d-flex justify-content-around ">
+    <div class="cor mb-3 d-flex justify-content-center align-items-center text-light " [style.background]="cor.cor">{{ cor.cor }}</div>
+    
+    <!-- {{ c.class }} -->
+
+  </div>
+</div>

@@ -1,0 +1,59 @@
+.gallery-item{
+    width: 5rem;
+    height: 5rem;
+
+    .gallery-image{
+        width: 100%;
+        height: 100%;
+    }
+}
+.g-modal{
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, .3);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: all 500ms;
+    &.active{
+        display: flex;
+        opacity: 1;
+    }
+    .g-modal-content{
+        position: relative;
+        max-width: 100%;
+        height: 200px;
+        .g-modal-close{
+            position: absolute;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: -1rem;
+            right: -1rem;
+            border-radius: 50%;
+            background-color: darkcyan;
+        }
+        
+    }
+}
+.g-modal-close{
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -1rem;
+    right: -1rem;
+    border: 0;
+    cursor: pointer;
+    z-index: 2000;
+    border-radius: 50%;
+}

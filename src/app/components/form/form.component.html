@@ -1,0 +1,101 @@
+<h3>
+  Elementos de Formulário
+</h3>
+
+<div class="row">
+
+
+  <div class="col-md-10 m-auto">
+
+    <div class="shadow-sm p-5 mb-5 bg-white rounded">
+
+      <div class="mb-3 row">
+        <div class="col">
+          <app-date-picker></app-date-picker>
+        </div>
+        <div class="col">
+          <!-- <select class="custom-select">
+            <option selected hidden>Select menu</option>
+            <option value="1">
+              Opçao 1
+
+              <span class="fa fa-search "></span>
+            </option>
+            <option value="2">Opçao 2</option>
+            <option value="3">Opçao 3</option>
+          </select> -->
+          <app-select></app-select>
+
+        </div>
+
+      </div>
+
+      <div class="mb-3">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="customCheck1">
+          <label class="custom-control-label" for="customCheck1">Checkbox</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio1">Radio</label>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-6 mb-3">
+          <input type="text" class="form-control" placeholder="Input texto">
+
+        </div>
+
+        <div class="col-6 mb-3">
+          <input type="number" class="form-control" placeholder="Input numero">
+        </div>
+
+        <div class="col">
+          <div class="filx">
+            <input type="file" class="filx-input" id="customFile">
+            <label class="filx-label py-3 btn  btn-block" for="customFile">Adicionnar arquivos</label>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="mb-3">
+        <div class="alert alert-primary">
+          <b>Mensagem</b> de sucesso !
+        </div>
+        <div class="alert alert-danger">
+          <b>Mensagem</b> de erro !
+        </div>
+      </div>
+
+
+      <div class="form-row">
+        <div class="form-group col has-search">
+          <span class="fa fa-search form-control-feedback"></span>
+          <input type="text" class="form-control" placeholder="Pesquisar">
+        </div>
+        <div class="form-group col">
+          <div dropdown class="dropdown">
+            <button dropdownToggle id="dLabel" class="no-dd-icon btn btn-outline-primary " type="button">
+              <i class="fa fa-filter"></i>
+            </button>
+            <div *dropdownMenu role="menu" class="dropdown-menu " aria-labelledby="dLabel">
+
+              <div role="menuitem" class="dropdown-item">menu 1</div>
+              <div role="menuitem" class="dropdown-item">menu 2</div>
+              <div role="menuitem" class="dropdown-item">menu 3</div>
+
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

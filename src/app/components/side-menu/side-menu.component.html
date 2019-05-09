@@ -1,0 +1,40 @@
+<div class="row p-3 bg-primary-l h-100 flex-column flex-nowrap">
+  <div class="form-row">
+
+    <div class="form-group col-10 has-search">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="text" class="form-control" placeholder="Pesquisar">
+    </div>
+    <div class="form-group col-2">
+      <div dropdown class="dropdown">
+        <button dropdownToggle id="dLabel" class="no-dd-icon btn btn-outline-primary bg-white" type="button">
+          <i class="fa fa-filter"></i>
+        </button>
+        <div *dropdownMenu role="menu" class="dropdown-menu " aria-labelledby="dLabel">
+
+          <div role="menuitem" class="dropdown-item">menu 1</div>
+          <div role="menuitem" class="dropdown-item">menu 2</div>
+          <div role="menuitem" class="dropdown-item">menu 3</div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <!-- <nav class="nav flex-column  w-100">
+
+    <app-side-menu-card></app-side-menu-card>
+    <app-side-menu-card></app-side-menu-card>
+    <app-side-menu-card></app-side-menu-card>
+    <app-side-menu-card></app-side-menu-card>
+  </nav> -->
+
+  <div class="nav flex-column flex-nowrap overflow-auto h-100 w-100">
+      <app-side-menu-card *ngFor="let a of array"
+      [routerLink]="['info', a]" routerLinkActive="igo" class="pow"></app-side-menu-card>
+      
+  </div>
+</div>

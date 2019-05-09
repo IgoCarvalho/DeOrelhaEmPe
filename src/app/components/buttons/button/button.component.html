@@ -1,0 +1,12 @@
+<button class="btnx" 
+  [ngClass]="{
+    'btnx-secondary': type == 'secondary',
+    'btnx-danger': type == 'danger',
+    'btnx-facebook': type == 'facebook',
+    'btnx-google': type == 'google',
+    'btnx-github': type == 'github',
+    'btnx-primary': !type
+  }"
+>
+<ng-content></ng-content>
+</button>

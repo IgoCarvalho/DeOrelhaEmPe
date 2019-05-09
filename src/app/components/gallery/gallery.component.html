@@ -1,0 +1,30 @@
+<div *ngIf="images" class="row">
+  <div *ngFor="let i of images" class="col-2">
+    <div class="rounded p-1 shadow-sm gallery-item">
+      <img (click)="openModal(template)" class="gallery-image" [src]="i" alt="">
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!images">
+  <p>Sem midias</p>
+</div>
+
+
+
+
+<ng-template #template >
+      <button type="button" class=" g-modal-close bg-white shadow-sm" aria-label="Close" (click)="hiddeModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    <div #bo class="modal-body p-1">
+      <carousel  #car [interval]="false"  *ngIf="images">
+          <slide [id]="i" *ngFor="let img of images, index as i">
+            <img [src]="img" class="img-responsive center-block rounded" alt="Random first slide">
+            
+          </slide>
+          
+        </carousel>
+    </div>
+  </ng-template>
+  

@@ -1,0 +1,58 @@
+<ng-template #template >
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Caixa de dialogo</h4>
+    <button type="button" class="close" aria-label="Close" (click)="hiddeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body text-dark">
+    <p>Olá essa é uma caixa da dialogo</p>
+  </div>
+  <div class="modal-footer justify-content-around ">
+    <app-button (click)="hiddeModal()">
+      Ok
+    </app-button>
+
+    <app-button [type]="'danger'" (click)="hiddeModal()">
+      Fechar
+    </app-button>
+  </div>
+</ng-template>
+
+<h3>Caixa de dialogo</h3>
+<div class="container">
+  <div class="d-flex flex-column align-items-center">
+
+    <div class="col-6 mb-3">
+
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Caixa de dialogo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-dark">
+          <p>Olá essa é uma caixa da dialogo</p>
+
+        </div>
+        <div class="modal-footer justify-content-around ">
+          <app-button (click)="c('Save click')">
+            Ok
+          </app-button>
+
+          <app-button [type]="'danger'" (click)="c('Save click')">
+            Fechar
+          </app-button>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <button class="btnx btn-lg btnx-primary" (click)="openModal(template)">Experimente uma caixa de dialogo</button>
+  </div>
+
+</div>

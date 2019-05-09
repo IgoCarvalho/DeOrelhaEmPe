@@ -1,0 +1,106 @@
+
+//
+// Color system
+//
+
+$white:    #fff !default;
+$gray-100: #f6f6f6 !default;
+$gray-200: #f0f0f0 !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #999 !default;
+$gray-700: #555 !default;
+$gray-800: #333 !default;
+$gray-900: #222 !default;
+$black:    #000 !default;
+
+$blue:    #006052 !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #E74054 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #FF851B !default;
+$green:   #28B62C !default;
+$teal:    #20c997 !default;
+$cyan:    #75CAEB !default;
+$igo:     #84e;
+
+$p-primary: #006052;
+$p-primary-l: #078472;
+$p-secondary: #e28935;
+$p-secondary-l: #f5d372;
+$p-info: #49a8e9;
+$p-danger: #e74054;
+$p-neutro: #7e7e7e;
+
+$primary:       $p-primary !default;
+$secondary:     $p-secondary !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $p-danger !default;
+$light:         $gray-100 !default;
+$dark:          $gray-700 !default;
+
+// Social icons color
+$social-twitter:                   #55acee !default;
+$social-twitter-state-color:       lighten(#55acee, 6%) !default;
+
+$social-facebook: 			       #3b5998 !default;
+$social-facebook-state-color:      lighten(#3b5998, 6%) !default;
+
+$social-google: 			       #dd4b39 !default;
+$social-google-state-color:        lighten(#dd4b39, 6%) !default;
+
+$social-linkedin: 			       #0077B5 !default;
+$social-linkedin-state-color:      lighten(#0077B5, 6%) !default;
+
+$social-github: 		      	   #333333 !default;
+$social-github-state-color:        lighten(#333333, 6%) !default;
+
+$social-youtube: 		    	   #e52d27 !default;
+$social-youtube-state-color:       lighten(#e52d27, 6%) !default;
+
+$social-instagram: 		           #125688 !default;
+$social-instagram-state-color:     lighten(#125688, 6%) !default;
+
+$theme-colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark,
+    "primary-l":  $p-primary-l
+  ),
+  $theme-colors
+);
+
+
+
+$yiq-contrasted-threshold: 200 !default;
+
+$btn-focus-width: 0;
+
+$border-radius: .5rem;
+
+$modal-content-border-radius: $border-radius;
+$modal-content-border-width: 0;
+$modal-header-border-width: 1px;
+
+$input-border-color: $primary;
+
+$custom-checkbox-indicator-border-radius: .25rem;
+
+$border-width: 2px;
+
+$font-family-sans-serif:      Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+
+

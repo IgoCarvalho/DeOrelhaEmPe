@@ -1,0 +1,19 @@
+<div class="form-group">
+  <div class="input-group">
+    <input placeholder="DD/MM/AAAA" type="text" class="form-control" bsDatepicker #dp="bsDatepicker">
+
+    <div class="input-group-append">
+      <button class="btn btn-outline-primary " type="button" (click)="dp.show()" [attr.aria-expanded]="dp.isOpen">
+        <span class="fa fa-calendar-alt"></span>
+
+      </button>
+    </div>
+  </div>
+  <!-- <input type="text"
+           placeholder="Datepicker"
+           class="form-control"
+           bsDatepicker> -->
+  <!-- <input placeholder="Datepicker" type="text" class="form-control" bsDatepicker #dp="bsDatepicker">
+
+  <button class="btn btn-success" (click)="dp.show()" [attr.aria-expanded]="dp.isOpen">Date Picker</button> -->
+</div>
