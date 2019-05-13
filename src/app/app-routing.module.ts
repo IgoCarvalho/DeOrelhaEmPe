@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'user', component: LogFormsComponent, children: [
     {path: 'login', component: LoginFormComponent},
     {path: 'cad', component: RegisterFormComponent},
-    {path: '', component: LoginFormComponent}
+    {path: '', redirectTo: 'login', pathMatch: 'full'}
   ] },
 
 
