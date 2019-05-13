@@ -27,9 +27,10 @@ import { RegisterFormComponent } from './log-forms/register-form/register-form.c
 import { ComponentsRoutingModule } from './components-routing.module';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { SideMenuCardComponent } from './side-menu/side-menu-card/side-menu-card.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
-  declarations: [ComponentsComponent, ButtonComponent, HeaderComponent, FormComponent, DatePickerComponent, TipographyComponent, IconsComponent, ColorsComponent, BrandComponent, ButtonsComponent, CardComponent, SelectComponent, NotificationComponent, CarouselComponent, DialogModalComponent, GalleryComponent, LogFormsComponent, LoginFormComponent, RegisterFormComponent, SideMenuComponent, SideMenuCardComponent],
+  declarations: [ComponentsComponent, ButtonComponent, HeaderComponent, FormComponent, DatePickerComponent, TipographyComponent, IconsComponent, ColorsComponent, BrandComponent, ButtonsComponent, CardComponent, SelectComponent, NotificationComponent, CarouselComponent, DialogModalComponent, GalleryComponent, LogFormsComponent, LoginFormComponent, RegisterFormComponent, SideMenuComponent, SideMenuCardComponent, MapComponent],
   imports: [
     CommonModule,
     FormsModule,

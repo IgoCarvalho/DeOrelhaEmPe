@@ -7,11 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideMenuComponent implements OnInit {
 
+  iscative = true;
+  
   array: any[] = ['1','2','3','4','5'];
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  aa(){
+    this.iscative = !this.iscative;
+    console.log(this.iscative)
   }
 
 }
