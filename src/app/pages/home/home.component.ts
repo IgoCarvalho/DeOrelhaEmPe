@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  toggle = false;
+  
   constructor() { }
 
   ngOnInit() {
+    setTimeout(()=>{this.toggler()}, 300)
+  }
+
+  toggler(){
+    this.toggle = !this.toggle;
+    
   }
 
 }

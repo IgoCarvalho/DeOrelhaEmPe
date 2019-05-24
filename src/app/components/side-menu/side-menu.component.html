@@ -1,32 +1,33 @@
-<div class="side-menu row p-3 bg-primary-l h-100 flex-column flex-nowrap "
-[ngStyle]="{'opacity': !isactive? '1':'0.5'}">
-  <div class="form-row">
+<div class="side-menu row p-3 bg-primary-l h-100 flex-column flex-nowrap ">
+  <form >
     <h4 class="px-2 text-white" >Ocorrências</h4>
 
-    <div class="form-group col-10 has-search">
-      <span class="text-secondary fa fa-search form-control-feedback"></span>
-      <input type="text" class="form-control" placeholder="Pesquisar">
-    </div>
-    <div class="form-group col-2">
-      <div dropdown class="dropdown">
-        <button dropdownToggle id="dLabel" class="no-dd-icon btn btn-outline-primary bg-white" type="button">
-          <i class="text-secondary fa fa-filter"></i>
-        </button>
-        <div *dropdownMenu role="menu" class="dropdown-menu " aria-labelledby="dLabel">
-
-          <div role="menuitem" class="dropdown-item">categoria 1</div>
-          <div role="menuitem" class="dropdown-item">categoria 2</div>
-          <div role="menuitem" class="dropdown-item">categoria 3</div>
-
-        </div>
+    <div class="form-row flex-nowrap">
+      <div class="form-group w-100 has-search">
+        <span class="text-secondary fa fa-search form-control-feedback"></span>
+        <input type="text" class="form-control" placeholder="Pesquisar">
       </div>
+      <div class="form-group ml-2">
+        <div dropdown class="dropdown">
+          <button dropdownToggle id="dLabel" class="no-dd-icon btn btn-outline-primary bg-white" type="button">
+            <i class="text-secondary fa fa-filter"></i>
+          </button>
+          <div *dropdownMenu role="menu" class="dropdown-menu " aria-labelledby="dLabel">
 
+            <div role="menuitem" class="dropdown-item">categoria 1</div>
+            <div role="menuitem" class="dropdown-item">categoria 2</div>
+            <div role="menuitem" class="dropdown-item">categoria 3</div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <hr class="w-100 bg-primary mt-0 mb-3" >
 
 
-  </div>
+  </form>
 
   <!-- <nav class="nav flex-column  w-100">
 
@@ -42,8 +43,8 @@
       
   </div>
   <div class="toggler-content">
-    <div (click)="aa()" class="menu-toggler px-2 bg-primary-l text-secondary">
-      <i class="fas fa-angle-left fa-2x"></i>
+    <div (click)="toggle()" class="menu-toggler px-2 bg-primary-l text-secondary" [ngClass]="{' animation': !isactive}">
+      <i class="fas fa-angle-left fa-2x" ></i>
     </div>
   </div>
   

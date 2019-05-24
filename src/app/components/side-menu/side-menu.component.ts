@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-side-menu',
@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideMenuComponent implements OnInit {
 
-  iscative = true;
+  isactive = true;
+  @Output() toggler: EventEmitter<any> = new EventEmitter();
   
   array: any[] = ['1','2','3','4','5'];
 
@@ -16,9 +17,10 @@ export class SideMenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  aa(){
-    this.iscative = !this.iscative;
-    console.log(this.iscative)
+  toggle(){
+    this.isactive = !this.isactive;
+    console.log(this.isactive)
+    this.toggler.emit()
   }
 
 }

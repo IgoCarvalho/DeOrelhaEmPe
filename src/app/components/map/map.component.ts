@@ -14,7 +14,7 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
-    let map = new mapboxgl.Map({
+    /*let map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
       // center: [-103.59179687498357, 40.66995747013945],
@@ -39,6 +39,6 @@ export class MapComponent implements OnInit {
       }
   
       event.preventDefault();
-  });
+  });*/
   }
 }
