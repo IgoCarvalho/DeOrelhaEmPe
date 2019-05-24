@@ -1,47 +1,57 @@
 <div class="row mb-3 justify-content-center">
-  <h3 class="text-primary" >CADASTRO</h3>
+  <h3 class="text-primary">CADASTRO</h3>
 </div>
-<div class="row mb-4">
-    <div class="col">
-      <button class="btnx btnx-google btn-block" >
-        <i class="fab fa-google mr-2"></i>
-        Google
-      </button>
+<tabset [justified]="true">
+  <tab heading="Usuario">
+    
+    <div class="row my-4">
+      <div class="col">
+        <button class="btnx btnx-google btn-block">
+          <i class="fab fa-google mr-2"></i>
+          Google
+        </button>
+      </div>
+      <div class="col">
+        <button class="btnx btnx-facebook btn-block">
+          <i class="fab fa-facebook-f mr-2"></i>
+          Facebook
+        </button>
+      </div>
     </div>
-    <div class="col">
-      <button class="btnx btnx-facebook btn-block">
-        <i class="fab fa-facebook-f mr-2"></i>
-        Facebook
-      </button>
-    </div>
-  </div>
-<hr data-content="OU" class="hr-text text-primary">
-<form autocomplete="off" class="form" role="form">
-  <div class="form-group">
-    <!-- <label for="inputName">Nome</label> -->
-    <input class="form-control" id="inputName" placeholder="Nome" type="text">
-  </div>
-  <div class="form-group">
-    <!-- <label for="inputEmail3">Email</label> -->
-    <input class="form-control" id="inputEmail3" placeholder="Email" required="" type="email">
-  </div>
-  <div class="form-group">
-    <!-- <label for="inputPassword3">Senha</label> -->
-    <input class="form-control" id="inputPassword3" placeholder="Senha" required="" type="password">
-    <!-- <small class="form-text text-muted" id="passwordHelpBlock">Your password must be 8-20 characters long, contain
+    <hr data-content="OU" class="hr-text text-primary">
+    <form autocomplete="off" class="form" role="form">
+      <div class="form-group">
+        <!-- <label for="inputName">Nome</label> -->
+        <input class="form-control" id="inputName" placeholder="Nome" type="text">
+      </div>
+      <div class="form-group">
+        <!-- <label for="inputEmail3">Email</label> -->
+        <input class="form-control" id="inputEmail3" placeholder="Email" required="" type="email">
+      </div>
+      <div class="form-group">
+        <!-- <label for="inputPassword3">Senha</label> -->
+        <input class="form-control" id="inputPassword3" placeholder="Senha" required="" type="password">
+        <!-- <small class="form-text text-muted" id="passwordHelpBlock">Your password must be 8-20 characters long, contain
       letters and numbers, and must not contain spaces, special characters, or emoji.</small> -->
-  </div>
-  <div class="form-group">
-    <!-- <label for="inputVerify3">Verify</label> -->
-    <input class="form-control" id="inputVerify3" placeholder="Confirmar Senha" required="" type="password">
-  </div>
-  <div class="form-check custom-control custom-checkbox small">
-      <input type="checkbox" class="custom-control-input" id="formCheck1">
-      <label class="custom-control-label" for="formCheck1">
+      </div>
+      <div class="form-group">
+        <!-- <label for="inputVerify3">Verify</label> -->
+        <input class="form-control" id="inputVerify3" placeholder="Confirmar Senha" required="" type="password">
+      </div>
+      <div class="form-check custom-control custom-checkbox small">
+        <input type="checkbox" class="custom-control-input" id="formCheck1">
+        <label class="custom-control-label" for="formCheck1">
           | Concordo com os <a class="text-link" href="">Termos de privacidade</a>
-      </label>
-  </div>
-  <div class="form-group mt-3">
-    <button class="btnx btnx-primary btn-block" type="submit">Cadastrar</button>
-  </div>
-</form>
+        </label>
+      </div>
+      <div class="form-group mt-3">
+        <button class="btnx btnx-primary btn-block" type="submit">Cadastrar</button>
+      </div>
+    </form>
+
+  </tab>
+  <tab heading="CCZ">
+
+    <app-ccz-form></app-ccz-form>
+    
+  </tab>
