@@ -1,0 +1,35 @@
+<div class="div">
+  <div class="bloco">
+    <div class="etapa">
+      <div style="color: white; background-color: #006051;">1</div>
+      <p>DADOS</p>
+    </div>
+    <div class="etapa">
+      <div style="color: white; background-color: #006051;">2</div>
+      <p>EVIDÊNCIAS</p>
+    </div>
+    <div class="etapa" id="tres">
+      <div style="color: white; background-color: #006051;">3</div>
+      <p>LOCALIZAÇÃO</p>
+    </div>
+    <div class="linha"></div>
+  </div>
+  <div class="bloco-form">
+    <b>
+      <p>LOCALIZAÇÃO</p>
+    </b>
+    <div class="mapa"></div>
+    <div class="loc">OBTER LOCALIZAÇÃO AUTOMATICAMENTE</div>
+    <div>
+      <input class="form-control" type="text" style="width: 510px" placeholder="Endereço">
+      <input class="form-control" type="text" placeholder="Bairro">
+    </div>
+    <div>
+      <app-button routerLink="/2" [type]="'secondary'">
+        Voltar
+      </app-button>
+      <app-button routerLink="/">FINALIZAR</app-button>
+
+    </div>
+  </div>
+</div>

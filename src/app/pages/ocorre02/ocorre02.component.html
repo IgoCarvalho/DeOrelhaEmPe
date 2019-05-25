@@ -1,0 +1,39 @@
+<div class="div">
+  <div class="bloco">
+    <div class="etapa">
+      <div style="color: white; background-color: #006051;">1</div>
+      <p>DADOS</p>
+    </div>
+    <div class="etapa">
+      <div style="color: white; background-color: #006051;">2</div>
+      <p>EVIDÊNCIAS</p>
+    </div>
+    <div class="etapa" id="tres">
+      <div>3</div>
+      <p>LOCALIZAÇÃO</p>
+    </div>
+    <div class="linha"></div>
+  </div>
+  <div class="bloco-form">
+    <b>
+      <p>EVIDÊNCIAS</p>
+    </b>
+    <form>
+        <div class="mb-4 col">
+            <div class="filx">
+              <input type="file" class="filx-input" id="customFile">
+              <label class="filx-label py-3 btn  btn-block" for="customFile">Adicionnar arquivos</label>
+            </div>
+        </div>
+      <!-- <div class="form-group">
+        <label for="exampleFormControlFile1"></label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+      </div> -->
+    </form>
+    <app-button class="mt-2" routerLink="/1" [type]="'secondary'" >
+      Voltar 
+    </app-button>
+    <app-button routerLink="/3">Próximo</app-button>
+    
+  </div>
+</div>

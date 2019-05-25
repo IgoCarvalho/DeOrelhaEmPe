@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 // Componentes bootstrap
 import { BootstrapModule } from '../bootstrap.module';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 
 import { ComponentsComponent } from './components.component';
 import { HeaderComponent } from './header/header.component';
@@ -27,21 +29,30 @@ import { RegisterFormComponent } from './log-forms/register-form/register-form.c
 import { ComponentsRoutingModule } from './components-routing.module';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { SideMenuCardComponent } from './side-menu/side-menu-card/side-menu-card.component';
+import { HeaderInicialComponent } from './header-inicial/header-inicial.component';
+import { CardDesaComponent } from './card-desa/card-desa.component';
+import { CarouselMultilistComponent } from './carousel-multilist/carousel-multilist.component';
 
 @NgModule({
-  declarations: [ComponentsComponent, ButtonComponent, HeaderComponent, FormComponent, DatePickerComponent, TipographyComponent, IconsComponent, ColorsComponent, BrandComponent, ButtonsComponent, CardComponent, SelectComponent, NotificationComponent, CarouselComponent, DialogModalComponent, GalleryComponent, LogFormsComponent, LoginFormComponent, RegisterFormComponent, SideMenuComponent, SideMenuCardComponent],
+  declarations: [ComponentsComponent, ButtonComponent, HeaderComponent, FormComponent, DatePickerComponent, TipographyComponent, IconsComponent, ColorsComponent, BrandComponent, ButtonsComponent, CardComponent, SelectComponent, NotificationComponent, CarouselComponent, DialogModalComponent, GalleryComponent, LogFormsComponent, LoginFormComponent, RegisterFormComponent, SideMenuComponent, SideMenuCardComponent, HeaderInicialComponent, CardDesaComponent, CarouselMultilistComponent],
   imports: [
     CommonModule,
     FormsModule,
     ComponentsRoutingModule,
-    BootstrapModule
+    BootstrapModule,
+    CarouselModule
   ],
   exports: [
     ComponentsComponent,
     HeaderComponent,
     CardComponent,
-    SideMenuComponent
-
+    SideMenuComponent,
+    CarouselComponent,
+    HeaderInicialComponent,
+    CardDesaComponent,
+    CarouselMultilistComponent,
+    ButtonsComponent,
+    ButtonComponent
   ]
 })
 export class ComponentsModule { }

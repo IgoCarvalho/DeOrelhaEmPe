@@ -1,0 +1,21 @@
+@import '~src/styles/_variaveis.scss';
+
+.navbar-nav {
+    margin-left: 7%;
+    .nav-link{
+        padding: 0 .5rem;
+        margin-right: 20px;
+    }
+    .active > .nav-link{
+        background-color: $secondary;
+        border-radius: $border-radius;
+    }
+}
+
+.navbar-brand{
+    img{
+        // background-image: url('~src/assets/img/Caminho-18.png');
+        // background-size: 25px 25px;
+        max-width: 8rem;
+    }
+}
