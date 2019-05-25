@@ -1,13 +1,11 @@
 <div class="container-fluid ">
     <div class="row vh-100">
-        <div class="col-3 h-100">
-            <app-side-menu></app-side-menu>
+        <div id="sidebar-wapper" class="col-3 h-100" [ngClass]="{' ml--3': !toggle}">
+            <app-side-menu (toggler)="toggler()" ></app-side-menu>
 
         </div>
-        <div class="col-9 h-100 overflow-auto">
-            <div class="container py-4">
+        <div class="col h-100 px-0 overflow-auto">
                 <router-outlet></router-outlet>
-            </div>
         </div>
     </div>
 </div>

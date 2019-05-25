@@ -7,7 +7,7 @@ import {
   BsDatepickerModule,
   ModalModule,
   BsDropdownModule,
-  TabsModule 
+  TabsModule
 } from 'ngx-bootstrap';
 
 @NgModule({
@@ -16,14 +16,14 @@ import {
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
     BsDropdownModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
   ],
   exports: [
     CarouselModule,
     BsDatepickerModule,
     ModalModule,
     BsDropdownModule,
-    TabsModule 
+    TabsModule
   ]
 })
 export class BootstrapModule { }
