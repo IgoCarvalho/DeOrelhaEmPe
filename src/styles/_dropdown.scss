@@ -42,3 +42,8 @@
     -webkit-animation-name: slideIn;
     animation-name: slideIn;
   }
+
+  // remove dropdown  icon
+  .no-dd-icon.dropdown-toggle::after{
+    display: none
+}

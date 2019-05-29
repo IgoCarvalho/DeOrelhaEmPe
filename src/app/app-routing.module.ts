@@ -6,6 +6,7 @@ import { RegisterFormComponent } from './components/log-forms/register-form/regi
 import { ComponentsComponent } from './components/components.component';
 
 import { HomeComponent } from './pages/home/home.component';
+import { ApresentationComponent } from './pages/apresentation/apresentation.component';
 
 const routes: Routes = [
   // {path: 'home', component: HomeComponent},
@@ -17,7 +18,7 @@ const routes: Routes = [
   ] },
 
 
-  {path: '', redirectTo: "home", pathMatch: "full"},
+  {path: '', component: ApresentationComponent },
 
 ];
 

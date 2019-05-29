@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-select',
@@ -8,6 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class SelectComponent implements OnInit {
 
   tittle: any  =  'Selecione uma categoria';
+  @ViewChild('titulo') tittleElement: ElementRef;
   
   menu: any[] = [
     {type: 'item', value: 'value-1', label: 'opcao 1'},
@@ -23,10 +24,10 @@ export class SelectComponent implements OnInit {
   ngOnInit() {
   }
 
-  abc(value, event, elem){
-    elem.innerHTML = event.target.innerHTML;
+  abc(value, event){
+    this.tittleElement.nativeElement.innerHTML = event.target.innerHTML;
     this.emit.emit(value);
-    console.log(elem)
+    console.log(this.tittleElement.nativeElement)
     console.log(value);
   }
 

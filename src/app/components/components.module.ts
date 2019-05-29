@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // Componentes bootstrap
 import { BootstrapModule } from '../bootstrap.module';
@@ -32,15 +33,18 @@ import { SideMenuCardComponent } from './side-menu/side-menu-card/side-menu-card
 import { HeaderInicialComponent } from './header-inicial/header-inicial.component';
 import { CardDesaComponent } from './card-desa/card-desa.component';
 import { CarouselMultilistComponent } from './carousel-multilist/carousel-multilist.component';
+import { MapComponent } from './map/map.component';
+import { CczFormComponent } from './log-forms/ccz-form/ccz-form.component';
 
 @NgModule({
-  declarations: [ComponentsComponent, ButtonComponent, HeaderComponent, FormComponent, DatePickerComponent, TipographyComponent, IconsComponent, ColorsComponent, BrandComponent, ButtonsComponent, CardComponent, SelectComponent, NotificationComponent, CarouselComponent, DialogModalComponent, GalleryComponent, LogFormsComponent, LoginFormComponent, RegisterFormComponent, SideMenuComponent, SideMenuCardComponent, HeaderInicialComponent, CardDesaComponent, CarouselMultilistComponent],
+  declarations: [ComponentsComponent, ButtonComponent, HeaderComponent, FormComponent, DatePickerComponent, TipographyComponent, IconsComponent, ColorsComponent, BrandComponent, ButtonsComponent, CardComponent, SelectComponent, NotificationComponent, CarouselComponent, DialogModalComponent, GalleryComponent, LogFormsComponent, LoginFormComponent, RegisterFormComponent, SideMenuComponent, SideMenuCardComponent, HeaderInicialComponent, CardDesaComponent, CarouselMultilistComponent, MapComponent, CczFormComponent],
   imports: [
     CommonModule,
     FormsModule,
     ComponentsRoutingModule,
     BootstrapModule,
-    CarouselModule
+    CarouselModule,
+    HttpClientModule
   ],
   exports: [
     ComponentsComponent,
@@ -52,7 +56,9 @@ import { CarouselMultilistComponent } from './carousel-multilist/carousel-multil
     CardDesaComponent,
     CarouselMultilistComponent,
     ButtonsComponent,
-    ButtonComponent
+    ButtonComponent,
+    SelectComponent,
+    MapComponent
   ]
 })
 export class ComponentsModule { }

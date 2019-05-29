@@ -21,11 +21,50 @@
         <a class="nav-link" href="#" routerLink="#">Ações Educativas</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/desaparecidos">Desaparecidos</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" href="#" routerLink="/mapa">Dúvidas Frequentes</a>
       </li>
     </ul>
+
+    <ul *ngIf="!loged" class="navbar-nav ml-auto">
+      <li class="nav-item ">
+        <app-button routerLink="/1" type="danger"> Denunciar </app-button>
+      </li>
+    </ul>
+
+    <ul *ngIf="loged" class="navbar-nav ml-auto">
+      <!-- <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40"
+            height="40" class="rounded-circle">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Dashboard</a>
+          <a class="dropdown-item" href="#">Edit Profile</a>
+          <a class="dropdown-item" href="#">Log Out</a>
+        </div>
+      </li> -->
+      <li class="nav-item d-flex align-items-center text-light">
+        <i class="fas fa-bell "></i>
+      </li>
+
+      <div dropdown class=" nav-item dropdown">
+          <a dropdownToggle class="no-dd-icon nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          User Name
+          <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40"
+            height="40" class="rounded-circle">
+        </a>
+          <div *dropdownMenu role="menu" class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+
+            <div role="menuitem" class="dropdown-item"> Configuracoes </div>
+            <div role="menuitem" class="dropdown-item">Minhas ocorrencias</div>
+            <div class="dropdown-divider"></div>
+            <div role="menuitem" class="dropdown-item">Sair</div>
+
+          </div>
+        </div>
+    </ul>
+
   </div>
 </nav>

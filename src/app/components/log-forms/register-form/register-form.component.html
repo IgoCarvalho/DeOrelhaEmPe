@@ -19,18 +19,18 @@
       </div>
     </div>
     <hr data-content="OU" class="hr-text text-primary">
-    <form autocomplete="off" class="form" role="form">
+    <form class="form" role="form" (ngSubmit)="submit()">
       <div class="form-group">
         <!-- <label for="inputName">Nome</label> -->
-        <input class="form-control" id="inputName" placeholder="Nome" type="text">
+        <input class="form-control" id="inputName" placeholder="Nome" type="text" name="name" [(ngModel)]="user.name">
       </div>
       <div class="form-group">
         <!-- <label for="inputEmail3">Email</label> -->
-        <input class="form-control" id="inputEmail3" placeholder="Email" required="" type="email">
+        <input class="form-control" id="inputEmail3" placeholder="Email" required="" type="email" name="email" [(ngModel)]="user.email">
       </div>
       <div class="form-group">
         <!-- <label for="inputPassword3">Senha</label> -->
-        <input class="form-control" id="inputPassword3" placeholder="Senha" required="" type="password">
+        <input class="form-control" id="inputPassword3" placeholder="Senha" required="" type="password" name="password" [(ngModel)]="user.password">
         <!-- <small class="form-text text-muted" id="passwordHelpBlock">Your password must be 8-20 characters long, contain
       letters and numbers, and must not contain spaces, special characters, or emoji.</small> -->
       </div>

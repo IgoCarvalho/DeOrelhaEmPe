@@ -21,15 +21,19 @@
         <p>DADOS DA OCORRÊNCIA</p>
       </b>
       <input class="form-control" type="text" placeholder="TÍTULO DA OCORRÊNCIA">
-      <div class="form-group">
-        <label for="exampleFormControlSelect1"></label>
+      <div class="form-group d-flex justify-content-center ">
+        <div class="tt">
+          <app-select></app-select>
+
+        </div>
+        <!-- <label for="exampleFormControlSelect1"></label>
         <select class="form-control" id="exampleFormControlSelect1">
           <option>CATEGORIA</option>
           <option>2</option>
           <option>3</option>
           <option>4</option>
           <option>5</option>
-        </select>
+        </select> -->
       </div>
       <div class="form-group">
         <label for="exampleFormControlTextarea1"></label>
@@ -60,18 +64,14 @@
       <b>
         <p>EVIDÊNCIAS</p>
       </b>
-      <form>
-        <div class="mb-4 col">
+      <div class="form-group d-flex justify-content-center">
+        <div class="mb-4 tt">
           <div class="filx">
             <input type="file" class="filx-input" id="customFile">
-            <label class="filx-label py-3 btn  btn-block" for="customFile">Adicionnar arquivos</label>
+            <label class="filx-label py-3 btn  btn-block" for="customFile">Adicionar arquivos</label>
           </div>
         </div>
-        <!-- <div class="form-group">
-                <label for="exampleFormControlFile1"></label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
-              </div> -->
-      </form>
+      </div>
       <div>
         <app-button class="mt-2" (click)="etapa1=false;etapa2=true" [type]="'secondary'">
           Voltar
@@ -101,7 +101,13 @@
       <b>
         <p>LOCALIZAÇÃO</p>
       </b>
-      <div class="mapa"></div>
+      <div class="mapa">
+        <app-map></app-map>
+      </div>
+
+      <div>
+        dados: {{ aa| json }}
+      </div>
       <div class="loc">OBTER LOCALIZAÇÃO AUTOMATICAMENTE</div>
       <div>
         <input class="form-control" type="text" style="width: 510px" placeholder="Endereço">

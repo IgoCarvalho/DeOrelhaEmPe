@@ -1,12 +1,12 @@
-<div class="div">
+<div class="formulario" [hidden]="etapa1">
   <div class="bloco">
     <div class="etapa">
       <div style="color: white; background-color: #006051;">1</div>
       <p>DADOS</p>
     </div>
     <div class="etapa">
-      <div style="color: white; background-color: #006051;">2</div>
-      <p>EVIDÊNCIAS</p>
+      <div>2</div>
+      <p>EVIDÊNCIA</p>
     </div>
     <div class="etapa" id="tres">
       <div>3</div>
@@ -14,26 +14,60 @@
     </div>
     <div class="linha"></div>
   </div>
-  <div class="bloco-form">
-    <b>
-      <p>EVIDÊNCIAS</p>
-    </b>
-    <form>
-        <div class="mb-4 col">
-            <div class="filx">
-              <input type="file" class="filx-input" id="customFile">
-              <label class="filx-label py-3 btn  btn-block" for="customFile">Adicionnar arquivos</label>
-            </div>
+</div>
+
+
+<div class="py-3 col-md-7 mx-auto bg-white shadow around">
+
+
+  <form action="">
+
+    <!-- PARTE 1 -->
+
+    <div [hidden]="etapa1">
+      <div class="form-group">
+        <input #sss class="form-control" type="text" placeholder="TÍTULO DA OCORRÊNCIA">
+      </div>
+      <div class="form-group">
+        <app-select (emit)="sss.value = $event" ></app-select>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" placeholder="DESCRIÇÃO SOBRE A OCORRÊNCIA" rows="3"></textarea>
+      </div>
+    </div>
+
+    <!-- PARTE 2 -->
+
+    <div [hidden]="etapa2">
+      <div class="form-group">
+        <div class="filx">
+          <input type="file" class="filx-input" id="customFile">
+          <label class="filx-label py-3 btn  btn-block" for="customFile">Adicionar arquivos</label>
         </div>
-      <!-- <div class="form-group">
-        <label for="exampleFormControlFile1"></label>
-        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-      </div> -->
-    </form>
-    <app-button class="mt-2" routerLink="/1" [type]="'secondary'" >
-      Voltar 
-    </app-button>
-    <app-button routerLink="/3">Próximo</app-button>
+      </div>
+    </div>
+
+    <!-- PARTE 3 -->
+
+    <div [hidden]="etapa3">
+      <div class="form-gruop">
+        <div class="mapa">
+          <app-map></app-map>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-8">
+          <input class="form-control" type="text" placeholder="Endereço">
+        </div>
+        <div class="col-4">
+          <input class="form-control" type="text" placeholder="Bairro">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <app-button> Proximo </app-button>
+    </div>
     
-  </div>
+  </form>
 </div>
