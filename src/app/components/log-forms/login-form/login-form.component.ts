@@ -24,9 +24,11 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit(form){
-    this.authService.login(form).subscribe(
-      (res) => { console.log('DEU CERTO'); this.router.navigate(['/home']); },
-      (error) => { this.erroLogin = true; }
+    console.log(form);
+    
+    this.authService.login(form.value).subscribe(
+      (res) => { console.log('DEU CERTO', this.authService.token); /*this.router.navigate(['/home']);*/ },
+      (error) => { console.log('DEU ERROR', error); this.erroLogin = true; }
     )
   }
 

@@ -61,7 +61,7 @@ export class MapComponent implements OnInit {
           data: data,
           cluster: true,
           clusterRadius: 50,
-          clusterMaxZoom: 16
+          clusterMaxZoom: 15
         })
 
         map.addLayer({
@@ -75,7 +75,7 @@ export class MapComponent implements OnInit {
               type: 'interval',
               stops: [
                 [0, 'rgba(12,202,100, 0.5)'],
-                [100, '#2D7026'],
+                [3, 'rgba(202,22,100, 0.5)'],
                 [750, '#0B5703'],
               ]
             },
@@ -84,7 +84,7 @@ export class MapComponent implements OnInit {
               type: 'interval',
               stops: [
                 [0, 20],
-                [100, 30],
+                [3, 30],
                 [750, 40]
               ]
             }
@@ -109,7 +109,10 @@ export class MapComponent implements OnInit {
           source: 'ocorrencias',
           filter: ['!has', 'point_count'],
           paint: {
-            'circle-color': '#1EF008',
+            'circle-color': ["case",
+              ['==', ['get', 'igo'], true],['get', 'color'],
+              '#04eb87'
+            ],
             'circle-radius': 6,
             'circle-stroke-width': 1,
             'circle-stroke-color': '#fff'
