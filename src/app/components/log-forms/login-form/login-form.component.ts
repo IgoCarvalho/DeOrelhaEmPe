@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from'@angular/router'
+import { Router } from'@angular/router';
+
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -8,13 +10,24 @@ import { Router } from'@angular/router'
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  erroLogin: boolean = false;
+  
+  constructor(
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
   cad(){
-    this.route.navigate(['user/cad'])
+    this.router.navigate(['user/cad'])
+  }
+
+  onSubmit(form){
+    this.authService.login(form).subscribe(
+      (res) => { console.log('DEU CERTO'); this.router.navigate(['/home']); },
+      (error) => { this.erroLogin = true; }
+    )
   }
 
 }

@@ -29,7 +29,9 @@
             "styles": [
               "src/styles.scss",
               "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss",
-              "src/styles/mystyle.scss"
+              "./src/styles/mystyle.scss",
+              "./node_modules/mapbox-gl/dist/mapbox-gl.css",
+              "./node_modules/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true

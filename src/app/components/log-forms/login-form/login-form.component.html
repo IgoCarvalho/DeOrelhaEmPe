@@ -19,14 +19,16 @@
 
 <hr data-content="OU" class="hr-text text-primary">
 
-<form autocomplete="off" class="form" id="formLogin" name="formLogin" role="form">
+<form class="form" role="form" #uForm="ngForm" (ngSubmit)="onSubmit(uform)">
   <div class="form-group">
-    <!-- <label for="email1">Email</label> -->
-    <input class="form-control" id="email1" name="email1" type="email" placeholder="Email" required>
+    <!-- <label for="email">Email</label> -->
+    <input class="form-control" id="email" name="email" type="email" placeholder="nome@email.com"
+     ngModel required email>
   </div>
   <div class="form-group">
-    <!-- <label for="pwd1">Senha</label> -->
-    <input autocomplete="new-password" class="form-control" id="pwd1" type="password" placeholder="Senha" required>
+    <!-- <label for="pwd">Senha</label> -->
+    <input class="form-control" id="pwd" name="password" type="password" placeholder="Senha"
+     ngModel required>
   </div>
   <div class="form-check custom-control custom-checkbox small">
       <input type="checkbox" class="custom-control-input" id="formCheck1">
@@ -34,7 +36,7 @@
           | Lembre-se de mim neste computador.
       </label>
   </div>
-  <button class="btnx btnx-primary  btn-block mt-3" type="button">Entrar</button>
+  <button class="btnx btnx-primary  btn-block mt-3" type="submit">Entrar</button>
   <hr data-content="NÃO POSSUI CONTA ?" class="hr-text text-primary">
   <div class="form-group mt-3">
     <button class="btnx btnx-secondary  btn-block mt-3" type="button" (click)="cad()">Cadastre-se</button>
