@@ -4,33 +4,35 @@
 
 .div{
     width: 100%;
-    height: 100%;
+    height: auto;
     // display: flex;
     // justify-content: center;
     text-align: center;
 }
 .formulario{
     width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
+    height: auto;
+    // display: flex;
+    // justify-content: center;
 }
 .bloco{
     margin-top: 50px;
     width: auto;
     height: auto;
-    overflow: hidden;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;   
+    // overflow: hidden;
+    text-align: center;
+    // position: absolute;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;   
 }
 .etapa{
-    width: auto;
+    width: 70px;
     height: auto;
-    margin-right: 250px;
+    margin-right: 10%;
     text-align: center;
     font-size: 12px;
+    display: inline-block;
     div{
         width: 45px;
         height: 45px;
@@ -50,27 +52,29 @@
 }
 #tres{
     margin-right: 0;
+    padding-right: 0;
 }
 .linha{
-    width: 90%;
+    // width: 90%;
+    display: inline-block;
     height: 2px;
     background-color: #006051;
-    position: absolute;
-    bottom: 72%;
-    z-index: -1;  
+    // position: absolute;
+    // bottom: 72%;
+    // z-index: -1;  
 }
 .bloco-form{
-    width: 70%;
-    height: 400px;
+    // width: 70%;
+    // height: auto;
     box-shadow: 0 7px 14px 0 rgba(59, 65, 94, 0.253), 0 3px 6px 0 rgba(0, 0, 0, 0.192);
     border-radius: 10px;
-    margin-top: 150px;
-    z-index: 2;
-    position: absolute;
+    // margin-top: 50px;
+    // z-index: 2;
+    // position: absolute;
     text-align: center;
     // overflow: hidden;
     p{
-        margin-top: 20px;
+        padding-top: 20px;
     }
     .form-control, .dropdown{
     width: 80%;
@@ -89,14 +93,12 @@
     }
 }
 #etapa2{
-    height: 230px;
     app-button{
         margin-bottom: 50px;
         position: relative;
     } 
 }
 #etapa3{
-    height: 500px;
     .loc{
         width: 80%;
         height: auto;

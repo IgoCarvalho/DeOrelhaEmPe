@@ -7,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '
 })
 export class SelectComponent implements OnInit {
 
-  tittle: any  =  'Selecione uma categoria';
+  tittle: any  =  'CATEGORIA';
   @ViewChild('titulo') tittleElement: ElementRef;
   
   menu: any[] = [
