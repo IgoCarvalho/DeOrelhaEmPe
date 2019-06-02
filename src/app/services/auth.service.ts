@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { tap, shareReplay } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
@@ -17,11 +16,12 @@ export class AuthService {
 
   constructor( private http: HttpClient ) { }
 
-  private setSession(authResult) {
+  private setSession(data) {
     // const token = authResult.token;
     // const expiresAt = moment.unix(payload.exp);
 
-    localStorage.setItem('token', btoa(JSON.stringify(authResult)));
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('token', btoa(JSON.stringify(data.user)));
     // localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }
 
@@ -30,7 +30,7 @@ export class AuthService {
     return this.http.post<any>(`${this.url}/users`, params).pipe(
       tap(
         (res) => {console.log('adicionando token ao locahost'); this.setSession(res)},
-        (erro) => console.log('eroo ao adicionar token ao locahost'),
+        (erro) => console.log('eroo ao adicionar token ao locahost', erro),
         () => console.log('TERMINADO')
         )
     );
@@ -41,7 +41,7 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('token');
-    localStorage.removeItem('expires_at');
+    localStorage.removeItem('user');
   }
 
   isLoged(){
@@ -52,7 +52,7 @@ export class AuthService {
     localStorage.getItem('token')? console.log('USUSARIO') : console.log('SEM USUARIO');
   }
 
-  get token(): string {
+  getToken(): string {
     return JSON.parse(atob(localStorage.getItem('token')));
   }
   

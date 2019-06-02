@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import { data } from './map.geo';
 
+import  {geo}  from  'src/assets/geodata.geojson';
+
 console.log(data);
 
 
@@ -18,7 +20,7 @@ export class MapComponent implements OnInit {
   }
 
   ngOnInit() {
-    let map = new mapboxgl.Map({
+    /*let map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
       // center: [-103.59179687498357, 40.66995747013945],
@@ -68,7 +70,8 @@ export class MapComponent implements OnInit {
           id: 'ocorrencia',
           type: 'circle',
           source: 'ocorrencias',
-          filter: ['has', 'point_count'],
+          // filter: ['has', 'point_count'],
+          filter: ['has',['==', 'color', '#8833ee']],
           paint: {
             'circle-color': {
               property: 'point_count',
@@ -107,7 +110,7 @@ export class MapComponent implements OnInit {
           id: 'airport',
           type: 'circle',
           source: 'ocorrencias',
-          filter: ['!has', 'point_count'],
+          filter: ['!has', 'color'],
           paint: {
             'circle-color': ["case",
               ['==', ['get', 'igo'], true],['get', 'color'],
@@ -133,8 +136,82 @@ export class MapComponent implements OnInit {
         //     "text-anchor": "top"
         //   }
         // });
+      });*/
+
+      //this.createMap();
+  }
+
+  createMap(){
+    let hydro = ['==', ['get', 'fuel1'], 'Hydro'];
+
+
+    let map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/light-v10',
+      center: [-79.381000, 43.646000],
+      zoom: 12.0
+    });
+    
+    map.on('load', () => {
+      // add a clustered GeoJSON source for powerplant
+      map.addSource('powerplants', {
+        'type': 'geojson',
+        'data': geo,
+        'cluster': true,
+        'clusterRadius': 80,
+        'clusterProperties': { // keep separate counts for each fuel category in a cluster
+          'hydro': ['+', ['case', hydro, 1, 0]]
+          }
       });
 
+      let current_fuel = "hydro";
+
+      map.addLayer({
+        'id': 'powerplant_cluster',
+        'type': 'circle',
+        'source': 'powerplants',
+        'filter': [
+          'all',
+          ['>', ['get', current_fuel], 1],
+          ['==', ['get', 'cluster'], true]
+        ],
+        'paint': {
+          'circle-color': 'rgba(0,0,0,.6)',
+          'circle-radius': [
+            'step',
+            ['get', current_fuel],
+            20,
+            100,
+            30,
+            750,
+            40
+          ],
+          'circle-stroke-color': '#8dd3c7',
+          'circle-stroke-width': 5
+        }
+      });
+
+      map.addLayer({
+        'id': 'powerplant_cluster_label',
+        'type': 'symbol',
+        'source': 'powerplants',
+        'filter': [
+          'all',
+          ['>', ['get', current_fuel], 1],
+          ['==', ['get', 'cluster'], true]
+        ],
+        'layout': {
+          'text-field': ['number-format', ['get', current_fuel], {}],
+          'text-font': ['Montserrat Bold', 'Arial Unicode MS Bold'],
+          'text-size': 13
+        },
+        'paint': {
+          'text-color': '#8dd3c7'
+        }
+      });
+      
+    });
+    
   }
 
 
