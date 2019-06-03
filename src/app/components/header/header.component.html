@@ -25,13 +25,13 @@
       </li>
     </ul>
 
-    <ul *ngIf="!loged" class="navbar-nav ml-auto">
+    <ul *ngIf="!authService.isLoged()" class="navbar-nav ml-auto">
       <li class="nav-item ">
         <app-button routerLink="/1" type="danger"> Denunciar </app-button>
       </li>
     </ul>
 
-    <ul *ngIf="loged" class="navbar-nav ml-auto">
+    <ul *ngIf="authService.isLoged()" class="navbar-nav ml-auto">
       <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
@@ -51,7 +51,7 @@
       <div dropdown class=" nav-item dropdown">
           <a dropdownToggle class="no-dd-icon nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          User Name
+          {{ authService.getUser().name }}
           <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40"
             height="40" class="rounded-circle">
         </a>
