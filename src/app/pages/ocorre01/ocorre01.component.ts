@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import * as mapboxgl from 'mapbox-gl';
+import Denuncia from 'src/app/models/denunciaModel';
 
 
 @Component({
@@ -13,6 +15,12 @@ export class Ocorre01Component{
   etapa1: boolean = false;
   etapa2: boolean = true;
   etapa3: boolean = true;
+
+  denuncia: Denuncia = new Denuncia();
+  // denuncia = {titulo: '',
+  //             categoria: '',
+  //             descricao: '',
+  //             }
   
   aa = 'ifo';
   
@@ -60,6 +68,10 @@ export class Ocorre01Component{
       console.log(this.aa);
       });
 
+  }
+  mostrar(){
+    console.log(this.denuncia);
+    console.log(this.denuncia.categoria);
   }
 
 }

@@ -7,7 +7,7 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '
 })
 export class SelectComponent implements OnInit {
 
-  tittle: any  =  'Selecione uma categoria';
+  tittle: any  =  'CATEGORIA';
   @ViewChild('titulo') tittleElement: ElementRef;
   
   menu: any[] = [
@@ -24,7 +24,7 @@ export class SelectComponent implements OnInit {
   ngOnInit() {
   }
 
-  abc(value, event){
+  abc(value: string, event){
     this.tittleElement.nativeElement.innerHTML = event.target.innerHTML;
     this.emit.emit(value);
     console.log(this.tittleElement.nativeElement)

@@ -26,7 +26,24 @@
         </div>
       </div>
     </div>
-    <div class="card-footer bg-white  py-4"></div>
+    <div class="card-footer bg-white" [ngClass]="{'py-4': !mostrar}">
+      <div *ngIf="mostrar">
+        <app-button [type]="'secondary'" (click)="mostrarFeed = true;"><b>Enviar Feedback</b></app-button>
+      </div>
+    </div>
+  </div>
+  <div class="container feedback mb-3 bg-white rounded shadow-sm" [ngClass]="{'p-3 h-auto': mostrarFeed}">
+    <div class="m-3">
+      <h5>Comentário</h5>
+      <textarea class="form-control w-50" id="exampleFormControlTextarea1"></textarea>
+    </div>
+    <div class="m-3 w-50">
+      <h5>Status</h5>
+      <app-select></app-select>
+    </div>
+    <div class="d-flex justify-content-center w-100">
+      <app-button><b>Enviar</b></app-button>
+    </div>
   </div>
 
   <div class="card border-0 ">

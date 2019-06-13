@@ -17,18 +17,18 @@
 }
 .bloco{
     margin-top: 50px;
-    width: auto;
+    width: 50%;
     height: auto;
-    overflow: hidden;
+    // overflow: hidden;
     position: absolute;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;   
 }
 .etapa{
-    width: auto;
-    height: auto;
-    margin-right: 250px;
+    // width: 70%;
+    // height: auto;
+    margin-right: 30%;
     text-align: center;
     font-size: 12px;
     div{
@@ -46,22 +46,27 @@
     }
     p{
         margin-top: 10px;
+        position: relative;
     }
 }
 #tres{
     margin-right: 0;
+    width: 50px;
+    p{
+        left: -26%;
+    }
 }
-.linha{
-    width: 90%;
-    height: 2px;
-    background-color: #006051;
-    position: absolute;
-    bottom: 72%;
-    z-index: -1;  
-}
+// .linha{
+//     width: 6%;
+//     height: 2px;
+//     background-color: #006051;
+//     position: absolute;
+//     bottom: 72%;
+//     z-index: -1;  
+// }
 .bloco-form{
-    width: 70%;
-    height: 400px;
+    width: 80%;
+    height: auto;
     box-shadow: 0 7px 14px 0 rgba(59, 65, 94, 0.253), 0 3px 6px 0 rgba(0, 0, 0, 0.192);
     border-radius: 10px;
     margin-top: 150px;
@@ -96,7 +101,6 @@
     } 
 }
 #etapa3{
-    height: 500px;
     .loc{
         width: 80%;
         height: auto;
