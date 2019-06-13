@@ -1,17 +1,17 @@
 <div class="row justify-content-center mb-4 ">
-  <h3 class="text-primary">LOGIN</h3>
+  <h3 class="text-primary">Login</h3>
 </div>
 
 <div *ngIf="erroLogin" class="alert alert-danger"> Usuario ou sennha invalidos </div>
 
-<div class="row mb-4">
-  <div class="col">
+<div class="row">
+  <div class="form-group col-sm-12 col-md-6">
     <button class="btnx btnx-google  btn-block" >
       <i class="fab fa-google mr-2"></i>
       Google
     </button>
   </div>
-  <div class="col">
+  <div class="form-group col-sm-12 col-md-6">
     <button class="btnx btnx-facebook  btn-block">
       <i class="fab fa-facebook-f mr-2"></i>
       Facebook
@@ -21,15 +21,25 @@
 
 <hr data-content="OU" class="hr-text text-primary">
 
-<form class="form" role="form" #uForm="ngForm" (ngSubmit)="onSubmit(uForm)">
+<form class="needs-validation " novalidate role="form" #uForm="ngForm" (ngSubmit)="teste(uForm)">
   <div class="form-group">
-    <!-- <label for="email">Email</label> -->
+    <label for="email">Email</label>
+    <small *ngIf="email.invalid && uForm.submitted" class="float-right text-danger">Email invalido</small>
     <input class="form-control" id="email" name="email" type="email" placeholder="nome@email.com"
+    [ngClass]="{
+      'validation': email.invalid && uForm.submitted
+    }"
+    #email="ngModel"
      ngModel required email>
   </div>
   <div class="form-group">
-    <!-- <label for="pwd">Senha</label> -->
+    <label for="pwd">Senha</label>
+    <small *ngIf="senha.invalid && uForm.submitted" class="float-right text-danger">Senha invalida</small>
     <input class="form-control" id="pwd" name="password" type="password" placeholder="Senha"
+    [ngClass]="{
+      'validation': senha.invalid && uForm.submitted
+    }"
+    #senha="ngModel"
      ngModel required>
   </div>
   <div class="form-check custom-control custom-checkbox small">
@@ -41,7 +51,9 @@
   <button class="btnx btnx-primary  btn-block mt-3" type="submit">Entrar</button>
   <hr data-content="NÃO POSSUI CONTA ?" class="hr-text text-primary">
   <div class="form-group mt-3">
-    <button class="btnx btnx-secondary  btn-block mt-3" type="button" (click)="cad()">Cadastre-se</button>
+    <button [routerLink]="['/user/cad']" class="btnx btnx-secondary  btn-block mt-3" type="button" 
+    tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+      Cadastre-se</button>
   </div>
   
 </form>

@@ -69,9 +69,10 @@
       <div class="form-group d-flex justify-content-center">
         <div class="mb-4 tt">
           <div class="filx">
-            <input type="file" class="filx-input" id="customFile">
+            <input type="file" multiple class="filx-input" id="customFile" (change)="abc($event)">
             <label class="filx-label py-3 btn  btn-block" for="customFile">Adicionar arquivos</label>
           </div>
+          <app-gallery [images]="imagensPro" ></app-gallery>
         </div>
       </div>
       <div style="padding: 30px;">
@@ -112,8 +113,8 @@
       </div>
       <div class="loc">OBTER LOCALIZAÇÃO AUTOMATICAMENTE</div>
       <div style="width: 80%; display: inline-block">
-        <input class="form-control" style="width: 85%" type="text" placeholder="Endereço">
-        <input class="form-control" style="width: 40%" type="text" placeholder="Bairro">
+        <input class="form-control" style="width: 65%" type="text" placeholder="Endereço">
+        <input class="form-control" style="width: 25%" type="text" placeholder="Bairro">
       </div>
       <div style="padding: 30px;">
         <app-button (click)="etapa2=false;etapa3=true;" [type]="'secondary'">

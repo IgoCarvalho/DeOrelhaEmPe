@@ -17,41 +17,47 @@
 </div>
 
 
-<div class="py-3 col-md-7 mx-auto bg-white shadow around">
+<div class="p-4 col-11 col-sm-9 col-md-7 mx-auto bg-white shadow rounded">
 
 
-  <form action="">
+  <form id="myForm" #oForm="ngForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
 
     <!-- PARTE 1 -->
 
-    <div [hidden]="etapa1">
+    <div [hidden]="!(visible == 1)">
       <div class="form-group">
-        <input #sss class="form-control" type="text" placeholder="TÍTULO DA OCORRÊNCIA">
+        <input class="form-control" name="title" type="text" placeholder="TÍTULO DA OCORRÊNCIA" #title="ngModel" ngModel
+          required>
       </div>
       <div class="form-group">
-        <app-select (emit)="sss.value = $event" ></app-select>
+        <input class="d-none" type="text" name="category" #category="ngModel" ngModel required>
+        <app-select (selected)="selectCategory($event)"></app-select>
       </div>
       <div class="form-group">
-        <textarea class="form-control" placeholder="DESCRIÇÃO SOBRE A OCORRÊNCIA" rows="3"></textarea>
+        <textarea class="form-control" name="description" placeholder="DESCRIÇÃO SOBRE A OCORRÊNCIA" rows="3"
+          #decription="ngModel" ngModel required></textarea>
       </div>
     </div>
 
     <!-- PARTE 2 -->
 
-    <div [hidden]="etapa2">
+    <div [hidden]="!(visible == 2)">
       <div class="form-group">
         <div class="filx">
-          <input type="file" class="filx-input" id="customFile">
+          <input type="file" multiple class="filx-input" name="file" id="customFile" (change)="onChange($event)" 
+          #file="ngModel" ngModel>
           <label class="filx-label py-3 btn  btn-block" for="customFile">Adicionar arquivos</label>
         </div>
+        <app-file-preview [files]="imagesPre" (deleteEmitter)="removeData($event)"></app-file-preview>
       </div>
+
     </div>
 
     <!-- PARTE 3 -->
 
-    <div [hidden]="etapa3">
-      <div class="form-gruop">
-        <div class="mapa">
+    <div [hidden]="!(visible == 3)">
+      <div class="form-group">
+        <div class="mapa rounded">
           <app-map></app-map>
         </div>
       </div>
@@ -59,18 +65,50 @@
         <div #geocoder id="geocoder"></div>
       </div>
       <div class="form-row">
-        <div class="col-8">
-          <input class="form-control" type="text" placeholder="Endereço">
+        <div class="col-md-8 col-sm-12">
+          <input class="form-control" type="text" name="address" placeholder="Endereço" #address="ngModel" ngModel
+            required>
         </div>
-        <div class="col-4">
-          <input class="form-control" type="text" placeholder="Bairro">
+        <div class="col-md-4 col-sm-4">
+          <input class="form-control" type="text" name="num" placeholder="Numero" #num="ngModel" ngModel required>
+        </div>
+        <div class="col-md-4 col-sm-8">
+          <input class="form-control" type="text" name="neighborhood" placeholder="Bairro" #neighborhood="ngModel"
+            ngModel required>
+        </div>
+        <div class="col-md-8 col-sm-12">
+          <input class="form-control" type="text" name="other" placeholder="Outra coisa" #other="ngModel" ngModel>
         </div>
       </div>
     </div>
 
-    <div class="form-group">
-      <app-button> Proximo </app-button>
+    <!-- BOTOES -->
+
+    <div class="row  mt-3" [ngClass]="{'justify-content-center': !(visible == 1)}">
+      <div class="form-group col-sm-12 col-md-4">
+        <button type="button" class="btnx btnx-secondary  btn-block" (click)="prev()"
+          [ngClass]="{'d-none': visible == 1}">
+          Voltar
+        </button>
+      </div>
+      <div class="form-group col-sm-12 col-md-4">
+        <button *ngIf="!(visible == 3); else submitButton" type="button" class="btnx btnx-primary  btn-block"
+          (click)="next(oForm)">
+          Proximo
+        </button>
+        <ng-template #submitButton>
+          <button type="submit" class="btnx btnx-primary  btn-block">
+            Concluir
+          </button>
+        </ng-template>
+      </div>
     </div>
-    
+
   </form>
 </div>
+
+<app-for-debug [form]="oForm"></app-for-debug>
+
+<pre>
+  {{ data | json }}
+</pre>

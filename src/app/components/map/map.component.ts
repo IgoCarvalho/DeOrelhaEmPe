@@ -70,8 +70,8 @@ export class MapComponent implements OnInit {
           id: 'ocorrencia',
           type: 'circle',
           source: 'ocorrencias',
-          // filter: ['has', 'point_count'],
-          filter: ['has',['==', 'color', '#8833ee']],
+          filter: ['has', 'point_count'],
+          // filter: ['has',['==', 'color', '#8833ee']],
           paint: {
             'circle-color': {
               property: 'point_count',
@@ -110,12 +110,9 @@ export class MapComponent implements OnInit {
           id: 'airport',
           type: 'circle',
           source: 'ocorrencias',
-          filter: ['!has', 'color'],
+          filter: ['!has', 'point_count'],
           paint: {
-            'circle-color': ["case",
-              ['==', ['get', 'igo'], true],['get', 'color'],
-              '#04eb87'
-            ],
+            'circle-color': '#04eb87',
             'circle-radius': 6,
             'circle-stroke-width': 1,
             'circle-stroke-color': '#fff'
@@ -136,9 +133,9 @@ export class MapComponent implements OnInit {
         //     "text-anchor": "top"
         //   }
         // });
-      });*/
+      });
 
-      //this.createMap();
+      //this.createMap();*/
   }
 
   createMap(){

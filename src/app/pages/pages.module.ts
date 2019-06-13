@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {FormsModule} from '@angular/forms'
 
 
 // Modulo de componentes
@@ -20,6 +21,7 @@ import { Ocorre03Component } from './ocorre03/ocorre03.component';
   declarations: [HomeComponent, ApresentationComponent, Ocorre01Component, Ocorre02Component, Ocorre03Component],
   imports: [
     CommonModule,
+    FormsModule,
     ComponentsModule,
     PagesRoutingModule,
     BootstrapModule

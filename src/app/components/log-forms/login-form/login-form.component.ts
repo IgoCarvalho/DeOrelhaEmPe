@@ -25,11 +25,16 @@ export class LoginFormComponent implements OnInit {
     this.router.navigate(['user/cad'])
   }
 
+  teste(form){
+    console.log(form)
+  }
+
   onSubmit(form){
     console.log(form);
+    if (form.invalid) return;
     
     this.authService.login(form.value).subscribe(
-      (data) => { console.log('DEU CERTO', this.authService.getToken()); /*this.router.navigate(['/home']);*/ },
+      (data) => { console.log('DEU CERTO', this.authService.getToken()); this.router.navigate(['/home']); },
       (error: HttpErrorResponse) => { console.log('DEU ERROR', error); this.erroLogin = true; }
     )
   }

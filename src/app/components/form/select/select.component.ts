@@ -7,17 +7,16 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '
 })
 export class SelectComponent implements OnInit {
 
-  tittle: any  =  'CATEGORIA';
+  title: any  =  'CATEGORIA';
   @ViewChild('titulo') tittleElement: ElementRef;
   
-  menu: any[] = [
-    {type: 'item', value: 'value-1', label: 'opcao 1'},
-    {type: 'item', value: 'value-2', label: 'opcao 2'},
-    {type: 'item', value: 'value-3', label: 'opcao 3'},
-    {type: 'item', value: 'value-4', label: 'opcao 4'},
+  itens: any[] = [
+    {type: 'danger', value: 'maus-tratos', label: 'Maus-tratos'},
+    {type: 'info', value: 'perdido', label: 'Perdido'},
+    {type: 'secondary', value: 'nocivo-a-saude', label: 'Situação nociva a saúde'},
   ];
 
-  @Output() emit: EventEmitter<any> = new EventEmitter();
+  @Output() selected: EventEmitter<any> = new EventEmitter();
   
   constructor() { }
 
@@ -26,7 +25,7 @@ export class SelectComponent implements OnInit {
 
   abc(value, event){
     this.tittleElement.nativeElement.innerHTML = event.target.innerHTML;
-    this.emit.emit(value);
+    this.selected.emit(value);
     console.log(this.tittleElement.nativeElement)
     console.log(value);
   }
