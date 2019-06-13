@@ -1,18 +1,30 @@
 <div class="div">
-  <form (ngSubmit)="submit()">
-    <div class="formulario" [hidden]="etapa1">
-      <div class="bloco">
-        <div class="etapa">
-          <div style="color: white; background-color: #006051;">1</div>
-          <p>DADOS</p>
-        </div>
-        <div class="etapa">
-          <div>2</div>
-          <p>EVIDÊNCIAS</p>
-        </div>
-        <div class="etapa" id="tres">
-          <div>3</div>
-          <p>LOCALIZAÇÃO</p>
+
+  <div class="formulario" [hidden]="etapa1">
+    <div class="bloco">
+      <div class="etapa">
+        <div style="color: white; background-color: #006051;">1</div>
+        <p>DADOS</p>
+      </div>
+      <div class="etapa">
+        <div>2</div>
+        <p>EVIDÊNCIA</p>
+      </div>
+      <div class="etapa" id="tres">
+        <div>3</div>
+        <p>LOCALIZAÇÃO</p>
+      </div>
+      <!-- <div class="linha col-5"></div> -->
+    </div>
+    <div class="container col-10 bloco-form">
+      <b>
+        <p>DADOS DA OCORRÊNCIA</p>
+      </b>
+      <input class="form-control" type="text" placeholder="TÍTULO DA OCORRÊNCIA">
+      <div class="form-group d-flex justify-content-center ">
+        <div class="tt">
+          <app-select></app-select>
+
         </div>
         <!-- <div class="linha"></div> -->
       </div>
@@ -45,34 +57,41 @@
           <app-button (click)="etapa1=true;etapa2=false">Próximo</app-button>
         </div>
       </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1"></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="DESCRIÇÃO SOBRE A OCORRÊNCIA"
+          rows="3"></textarea>
+      </div>
+      <div style="padding: 30px;">
+        <app-button (click)="etapa1=true;etapa2=false">Próximo</app-button>
+      </div>
     </div>
 
-    <div class="formulario" [hidden]="etapa2">
-      <div class="bloco">
-        <div class="etapa">
-          <div style="color: white; background-color: #006051;">1</div>
-          <p>DADOS</p>
-        </div>
-        <div class="etapa">
-          <div style="color: white; background-color: #006051;">2</div>
-          <p>EVIDÊNCIAS</p>
-        </div>
-        <div class="etapa" id="tres">
-          <div>3</div>
-          <p>LOCALIZAÇÃO</p>
-        </div>
-        <!-- <div class="linha"></div> -->
+  <div class="formulario" [hidden]="etapa2">
+    <div class="bloco">
+      <div class="etapa">
+        <div style="color: white; background-color: #006051;">1</div>
+        <p>DADOS</p>
       </div>
-      <div class="bloco-form" id="etapa2">
-        <b>
-          <p>EVIDÊNCIAS</p>
-        </b>
-        <div class="form-group d-flex justify-content-center">
-          <div class="mb-4 tt">
-            <div class="filx">
-              <input type="file" class="filx-input" id="customFile">
-              <label class="filx-label py-3 btn  btn-block" for="customFile">Adicionar arquivos</label>
-            </div>
+      <div class="etapa">
+        <div style="color: white; background-color: #006051;">2</div>
+        <p>EVIDÊNCIAS</p>
+      </div>
+      <div class="etapa" id="tres">
+        <div>3</div>
+        <p>LOCALIZAÇÃO</p>
+      </div>
+      <!-- <div class="linha col-5"></div> -->
+    </div>
+    <div class="container col-10 bloco-form" id="etapa2">
+      <b>
+        <p>EVIDÊNCIAS</p>
+      </b>
+      <div class="form-group d-flex justify-content-center">
+        <div class="mb-4 tt">
+          <div class="filx">
+            <input type="file" class="filx-input" id="customFile">
+            <label class="filx-label py-3 btn  btn-block" for="customFile">Adicionar arquivos</label>
           </div>
         </div>
         <div style="margin-bottom: 50px;">
@@ -82,46 +101,52 @@
           <app-button (click)="etapa2=true;etapa3=false">Próximo</app-button>
         </div>
       </div>
-    </div>
-
-    <div class="formulario" [hidden]="etapa3">
-      <div class="bloco">
-        <div class="etapa">
-          <div style="color: white; background-color: #006051;">1</div>
-          <p>DADOS</p>
-        </div>
-        <div class="etapa">
-          <div style="color: white; background-color: #006051;">2</div>
-          <p>EVIDÊNCIAS</p>
-        </div>
-        <div class="etapa" id="tres">
-          <div style="color: white; background-color: #006051;">3</div>
-          <p>LOCALIZAÇÃO</p>
-        </div>
-        <!-- <div class="linha"></div> -->
+      <div style="padding: 30px;">
+        <app-button class="mb-2" (click)="etapa1=false;etapa2=true" [type]="'secondary'">
+          Voltar
+        </app-button>
+        <app-button (click)="etapa2=true;etapa3=false">Próximo</app-button>
       </div>
-      <div class="bloco-form" id="etapa3">
-        <b>
-          <p>LOCALIZAÇÃO</p>
-        </b>
-        <div class="mapa">
-          <app-map></app-map>
-        </div>
+    </div>
+  </div>
 
-        <div>
-          dados: {{ aa| json }}
-        </div>
-        <div class="loc">OBTER LOCALIZAÇÃO AUTOMATICAMENTE</div>
-        <div>
-          <input class="form-control" type="text" style="width: 70%" placeholder="Endereço">
-          <input class="form-control" type="text" style="width: 50%" placeholder="Bairro">
-        </div>
-        <div style="margin-bottom: 50px;">
-          <app-button (click)="etapa2=false;etapa3=true;" [type]="'secondary'">
-            Voltar
-          </app-button>
-          <button class="btnx btnx-primary btn-block" type="submit" (click)="mostrar()">FINALIZAR</button>
-        </div>
+  <div class="formulario" [hidden]="etapa3">
+    <div class="bloco">
+      <div class="etapa">
+        <div style="color: white; background-color: #006051;">1</div>
+        <p>DADOS</p>
+      </div>
+      <div class="etapa">
+        <div style="color: white; background-color: #006051;">2</div>
+        <p>EVIDÊNCIAS</p>
+      </div>
+      <div class="etapa" id="tres">
+        <div style="color: white; background-color: #006051;">3</div>
+        <p>LOCALIZAÇÃO</p>
+      </div>
+      <!-- <div class="linha col-5"></div> -->
+    </div>
+    <div class="container col-10 bloco-form" id="etapa3">
+      <b>
+        <p>LOCALIZAÇÃO</p>
+      </b>
+      <div class="mapa">
+        <app-map></app-map>
+      </div>
+
+      <div>
+        dados: {{ aa| json }}
+      </div>
+      <div class="loc">OBTER LOCALIZAÇÃO AUTOMATICAMENTE</div>
+      <div style="width: 80%; display: inline-block">
+        <input class="form-control" style="width: 85%" type="text" placeholder="Endereço">
+        <input class="form-control" style="width: 40%" type="text" placeholder="Bairro">
+      </div>
+      <div style="padding: 30px;">
+        <app-button (click)="etapa2=false;etapa3=true;" [type]="'secondary'">
+          Voltar
+        </app-button>
+        <app-button routerLink="/">FINALIZAR</app-button>
       </div>
     </div>
   </form>

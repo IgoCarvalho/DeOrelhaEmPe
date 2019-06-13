@@ -5,32 +5,34 @@ import { Observable } from 'rxjs';
 import { tap, shareReplay } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  // private url = environment.api_url;
-  private url = 'http://localhost:3003';
+  private url = environment.api_url;
+  // private url = 'http://localhost:3003';
 
   constructor( private http: HttpClient ) { }
 
-  private setSession(authResult) {
-    // const token = authResult.token;
+  private setSession(data) {
+    const token = data.token;
+    const userData = btoa(JSON.stringify(data.user)); 
     // const expiresAt = moment.unix(payload.exp);
 
-    localStorage.setItem('token', btoa(JSON.stringify(authResult)));
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', userData);
+    // localStorage.setItem('user', btoa(JSON.stringify(data.user)));
     // localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }
 
 
   login(params: {email: string, password: string}) {
-    return this.http.post<any>(`${this.url}/users`, params).pipe(
+    return this.http.post<any>(`${this.url}/users/signin`, params).pipe(
       tap(
-        (res) => {console.log('adicionando token ao locahost'); this.setSession(res)},
-        (erro) => console.log('eroo ao adicionar token ao locahost'),
+        (res) => {console.log('adicionando token ao locahost'); this.setSession(res); shareReplay()},
+        (erro) => console.log('eroo ao adicionar token ao locahost', erro),
         () => console.log('TERMINADO')
         )
     );
@@ -41,19 +43,22 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem('token');
-    localStorage.removeItem('expires_at');
+    localStorage.removeItem('user');
   }
 
-  isLoged(){
-    localStorage.getItem('token')? console.log('LOGADO') : console.log('NAO LOGADO');
+  isLoged(): boolean{
+    return localStorage.getItem('user')? true : false;
   }
 
   getUser(){
-    localStorage.getItem('token')? console.log('USUSARIO') : console.log('SEM USUARIO');
+    const user =  JSON.parse(atob(localStorage.getItem('user')));
+    return user;
   }
 
-  get token(): string {
-    return JSON.parse(atob(localStorage.getItem('token')));
+  getToken(): string {
+    const token =  JSON.parse(atob(localStorage.getItem('user')));
+    console.log(token);
+    return token;
   }
   
 }

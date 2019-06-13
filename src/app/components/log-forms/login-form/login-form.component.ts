@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from'@angular/router';
 
+import {HttpErrorResponse} from '@angular/common/http'
+
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -27,8 +29,8 @@ export class LoginFormComponent implements OnInit {
     console.log(form);
     
     this.authService.login(form.value).subscribe(
-      (res) => { console.log('DEU CERTO', this.authService.token); /*this.router.navigate(['/home']);*/ },
-      (error) => { console.log('DEU ERROR', error); this.erroLogin = true; }
+      (data) => { console.log('DEU CERTO', this.authService.getToken()); /*this.router.navigate(['/home']);*/ },
+      (error: HttpErrorResponse) => { console.log('DEU ERROR', error); this.erroLogin = true; }
     )
   }
 
