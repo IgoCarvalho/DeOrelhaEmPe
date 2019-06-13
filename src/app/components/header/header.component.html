@@ -32,34 +32,61 @@
     </ul>
 
     <ul *ngIf="authService.isLoged()" class="navbar-nav ml-auto">
-      <!-- <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+      <!-- Notificacoes -->
+      
+      <div dropdown class=" nav-item dropdown d-flex align-items-center">
+          <a dropdownToggle class="no-dd-icon nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40"
-            height="40" class="rounded-circle">
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Dashboard</a>
-          <a class="dropdown-item" href="#">Edit Profile</a>
-          <a class="dropdown-item" href="#">Log Out</a>
-        </div>
-      </li> -->
-      <li class="nav-item d-flex align-items-center text-light">
-        <i class="fas fa-bell "></i>
-      </li>
+          <i class="fas fa-bell "></i>
+          
+          </a>
+          <div *dropdownMenu role="menu" class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+
+            <div class="dropdown-item border-bottom d-flex align-items-center">
+              <div class="mr-3">
+                <div class="icon-circle bg-primary">
+                  <i class="fas fa-file-alt text-white"></i>
+                </div>
+              </div>
+              <div>
+                <div class="small text-gray-500">December 12, 2019</div>
+                <span class="font-weight-bold">A new monthly report is ready to download!</span>
+              </div>
+            </div>
+
+            <div class="dropdown-item d-flex align-items-center">
+              <div class="mr-3">
+                <div class="icon-circle bg-primary">
+                  <i class="fas fa-file-alt text-white"></i>
+                </div>
+              </div>
+              <div>
+                <div class="small text-gray-500">December 12, 2019</div>
+                <span class="font-weight-bold">A new monthly report is ready to download!</span>
+              </div>
+            </div>
+
+          </div>
+      </div>
 
       <div dropdown class=" nav-item dropdown">
           <a dropdownToggle class="no-dd-icon nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          {{ authService.getUser().name }}
+          <span class="px-2" >
+            
+            {{ authService.getUser().name }}
+            <!--User Name-->
+          </span>
           <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40"
             height="40" class="rounded-circle">
         </a>
-          <div *dropdownMenu role="menu" class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+          <div *dropdownMenu role="menu" class="dropdown-menu dropdown-menu-right custom-dropdown-menu text-center animate slideIn" aria-labelledby="navbarDropdown">
 
             <div role="menuitem" class="dropdown-item"> Configuracoes </div>
             <div role="menuitem" class="dropdown-item">Minhas ocorrencias</div>
+            
             <div class="dropdown-divider"></div>
+            
             <div role="menuitem" class="dropdown-item">Sair</div>
 
           </div>

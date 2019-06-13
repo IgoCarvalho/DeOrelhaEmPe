@@ -46,6 +46,18 @@ export class AuthService {
     localStorage.removeItem('user');
   }
 
+  registro(userData){
+
+    return this.http.post(`${this.url}/api/signup`, userData).pipe(
+      tap(
+        (res) => {console.log('adicionando token ao locahost'); this.setSession(res); shareReplay()},
+        (erro) => console.log('eroo ao adicionar token ao locahost', erro),
+        () => console.log('TERMINADO')
+        )
+    );
+    
+  }
+
   isLoged(): boolean{
     return localStorage.getItem('user')? true : false;
   }

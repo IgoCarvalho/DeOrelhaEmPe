@@ -22,6 +22,7 @@ import { CczComponent } from './ccz/ccz.component';
   declarations: [HomeComponent, ApresentationComponent, Ocorre01Component, Ocorre02Component, Ocorre03Component, CczComponent],
   imports: [
     CommonModule,
+    FormsModule,
     ComponentsModule,
     PagesRoutingModule,
     BootstrapModule,

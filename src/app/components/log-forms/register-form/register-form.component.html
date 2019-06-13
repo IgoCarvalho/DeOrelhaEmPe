@@ -1,53 +1,8 @@
 <div class="row mb-3 justify-content-center">
   <h3 class="text-primary">CADASTRO</h3>
 </div>
-<tabset [justified]="true">
+<!-- <tabset [justified]="true">
   <tab heading="Usuario">
-    
-    <div class="row my-4">
-      <div class="col">
-        <button class="btnx btnx-google btn-block">
-          <i class="fab fa-google mr-2"></i>
-          Google
-        </button>
-      </div>
-      <div class="col">
-        <button class="btnx btnx-facebook btn-block">
-          <i class="fab fa-facebook-f mr-2"></i>
-          Facebook
-        </button>
-      </div>
-    </div>
-    <hr data-content="OU" class="hr-text text-primary">
-    <form class="form" role="form" (ngSubmit)="submit()">
-      <div class="form-group">
-        <!-- <label for="inputName">Nome</label> -->
-        <input class="form-control" id="inputName" placeholder="Nome" type="text" name="name" [(ngModel)]="user.name">
-      </div>
-      <div class="form-group">
-        <!-- <label for="inputEmail3">Email</label> -->
-        <input class="form-control" id="inputEmail3" placeholder="Email" required="" type="email" name="email" [(ngModel)]="user.email">
-      </div>
-      <div class="form-group">
-        <!-- <label for="inputPassword3">Senha</label> -->
-        <input class="form-control" id="inputPassword3" placeholder="Senha" required="" type="password" name="password" [(ngModel)]="user.password">
-        <!-- <small class="form-text text-muted" id="passwordHelpBlock">Your password must be 8-20 characters long, contain
-      letters and numbers, and must not contain spaces, special characters, or emoji.</small> -->
-      </div>
-      <div class="form-group">
-        <!-- <label for="inputVerify3">Verify</label> -->
-        <input class="form-control" id="inputVerify3" placeholder="Confirmar Senha" required="" type="password">
-      </div>
-      <div class="form-check custom-control custom-checkbox small">
-        <input type="checkbox" class="custom-control-input" id="formCheck1">
-        <label class="custom-control-label" for="formCheck1">
-          | Concordo com os <a class="text-link" href="">Termos de privacidade</a>
-        </label>
-      </div>
-      <div class="form-group mt-3">
-        <button class="btnx btnx-primary btn-block" type="submit">Cadastrar</button>
-      </div>
-    </form>
 
   </tab>
   <tab heading="CCZ">
@@ -55,3 +10,74 @@
     <app-ccz-form></app-ccz-form>
     
   </tab>
+</tabset> -->
+
+<div class="row">
+  <div class="form-group col-sm-12 col-md-6">
+    <button class="btnx btnx-google  btn-block" >
+      <i class="fab fa-google mr-2"></i>
+      Google
+    </button>
+  </div>
+  <div class="form-group col-sm-12 col-md-6">
+    <button class="btnx btnx-facebook  btn-block">
+      <i class="fab fa-facebook-f mr-2"></i>
+      Facebook
+    </button>
+  </div>
+</div>
+<hr data-content="OU" class="hr-text text-primary">
+<form class="form" role="form" #rForm="ngForm" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="name">Nome</label>
+    <small *ngIf="nome.invalid && rForm.submitted" class="float-right text-danger">Nome invalido</small>
+    <input class="form-control" id="name" placeholder="Nome" type="text" name="name" 
+    [ngClass]="{
+      'validation': nome.invalid && rForm.submitted
+    }"
+    #nome="ngModel"
+    ngModel required>
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <small *ngIf="email.invalid && rForm.submitted" class="float-right text-danger">Email invalido</small>
+    <input class="form-control" id="email" placeholder="nome@email.com" type="email" name="email"
+    [ngClass]="{
+      'validation': email.invalid && rForm.submitted
+    }"
+    #email="ngModel"
+      ngModel required email>
+  </div>
+  <div class="form-group">
+    <label for="password">Senha</label>
+    <small *ngIf="senha.invalid && rForm.submitted" class="float-right text-danger">Senha invalida</small>
+    <input class="form-control" id="password" placeholder="Senha" type="password" name="password"
+    [ngClass]="{
+      'validation': senha.invalid && rForm.submitted
+    }"
+    #senha="ngModel"
+      ngModel required>
+    <!-- <small class="form-text text-muted" id="passwordHelpBlock">Your password must be 8-20 characters long, contain
+    letters and numbers, and must not contain spaces, special characters, or emoji.</small> -->
+  </div>
+  <div class="form-group">
+    <label for="password-verify">Confirmar Senha</label>
+    <small *ngIf="(confirmSenha.value !== senha.value) && rForm.submitted" class="float-right text-danger">Senha invalida</small>
+    <small *ngIf="(confirmSenha.value !== senha.value) && rForm.submitted" class="float-right text-danger">Senha invalida</small>
+    <input class="form-control" id="password-verify" placeholder="Confirmar Senha" type="password" name="password-verify"
+    [ngClass]="{
+      'validation': (confirmSenha.value !== senha.value) && confirmSenha.touched && rForm.submitted
+    }"
+    #confirmSenha="ngModel"
+    ngModel required>
+  </div>
+  <div class="form-check custom-control custom-checkbox small">
+    <input type="checkbox" class="custom-control-input" id="formCheck1">
+    <label class="custom-control-label" for="formCheck1">
+      | Concordo com os <a class="text-link" href="">Termos de privacidade</a>
+    </label>
+  </div>
+  <div class="form-group mt-3">
+    <button class="btnx btnx-primary btn-block" type="submit">Cadastrar</button>
+  </div>
+</form>

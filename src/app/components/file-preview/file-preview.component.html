@@ -1,0 +1,32 @@
+<!-- <div *ngIf="files" class="row text-center text-lg-left">
+
+  <div *ngFor="let f of files" class="col-lg-3 col-md-4 col-6">
+    <a href="#" class="d-block mb-4 h-100">
+          <img class="img-fluid img-thumbnail" [src]="f" alt="">
+        </a>
+  </div>
+
+</div> -->
+<div class="row">
+  <div class="col-12 col-md-8 mx-auto">
+      <ul *ngIf="files" class="list-group list-group-flush">
+          <li *ngFor="let f of files; index as i" class="py-2 d-flex align-items-center justify-content-between list-group-item">
+            
+              <div class=" img-prev"  [ngStyle]='{"background-image": "url("+f.img+")"}'> </div>
+              
+            
+            <div class="img-name px-2 overflow-hidden">
+              
+              <b>
+                {{ f.name }}
+
+              </b>
+            </div>
+            <div class="img-icons" (click)="delete(i)">
+        
+              <i class="float-right fas fa-times-circle fa-lg"></i>
+            </div>
+          </li>
+        </ul>
+  </div>
+</div>

@@ -23,10 +23,32 @@ export class Ocorre01Component{
   //             }
   
   aa = 'ifo';
+
+  imagens = []
+  imagensPro = []
   
   constructor() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiaWdvY2FydmFsaG8iLCJhIjoiY2p1cnhlb211MWcxcjRkbnRjdDFpeGExZSJ9.zCy_6DkI8tpXunft_yKkew';
   }
+
+  abc(event){
+    console.log(event.srcElement)
+    let files = event.srcElement.files
+    for (let i = 0; i < files.length; i++) {
+      let fileReader = new FileReader()
+
+      fileReader.onloadend = () =>{
+        this.imagensPro.push(fileReader.result)
+      }
+
+      fileReader.readAsDataURL(files[i])
+      
+    }
+    console.log(this.imagens)
+    console.log(this.imagensPro)
+
+  }
+  
   
   ngOnInit() {
     let map = new mapboxgl.Map({

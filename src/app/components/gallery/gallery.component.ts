@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, Input } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -11,7 +11,10 @@ export class GalleryComponent implements OnInit {
   
   // activeSlideIndex = 2;
 
-  images = [1, 2, 3, 4, 5].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
+  // images = [1, 2, 3, 4, 5].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
+
+  @Input() images = [];
+  
   modalRef: BsModalRef;
   
   constructor(private modalService: BsModalService) {}
