@@ -7,6 +7,7 @@ import { ComponentsComponent } from './components/components.component';
 
 import { HomeComponent } from './pages/home/home.component';
 import { ApresentationComponent } from './pages/apresentation/apresentation.component';
+import { HeaderComponent } from './components/header/header.component';
 
 const routes: Routes = [
   // {path: 'home', component: HomeComponent},
@@ -19,6 +20,11 @@ const routes: Routes = [
 
 
   {path: '', component: ApresentationComponent },
+  {
+    path: 'home',
+    component: ComponentsComponent,
+    outlet: 'popup'
+  },
 
 ];
 

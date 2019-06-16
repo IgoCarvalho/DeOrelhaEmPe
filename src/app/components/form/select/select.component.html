@@ -1,12 +1,12 @@
 <div dropdown class="dropdown">
   <button  #titulo id="dLabel" class="custom-select no-dd-icon  dropdown-select" type="button" dropdownToggle>
-    {{title}}
+    <span   class="text-muted" > {{title}} </span>
   </button>
   <ol *dropdownMenu class="dropdown-menu" aria-labelledby="dLabel" role="menu">
 
-    <li *ngFor="let i of itens" role="menuitem" (click)="abc( i.value, $event )">
-      <span class="text-{{i.type}} fa fa-circle"></span>
-      {{ i.label }}
+    <li *ngFor="let i of itens" role="menuitem" (click)="change( i.key, $event )">
+      <span class="text-{{i.key}} fa fa-circle"></span>
+      {{ i.name }}
     </li>
 
   </ol>

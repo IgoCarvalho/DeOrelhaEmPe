@@ -5,7 +5,7 @@
     <div class="form-row flex-nowrap">
       <div class="form-group w-100 has-search">
         <span class="text-secondary fa fa-search form-control-feedback"></span>
-        <input type="text" class="form-control" placeholder="Pesquisar">
+        <input type="text" class="form-control" placeholder="Pesquisar" #s (keyup)="search(s.value)" >
       </div>
       <div class="form-group ml-2">
         <div dropdown class="dropdown">
@@ -14,15 +14,15 @@
           </button>
           <div *dropdownMenu role="menu" class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="dLabel">
 
-            <div role="menuitem" class="dropdown-item">
+            <div role="menuitem" class="dropdown-item" (click)="setCategory('maus-tratos')">
               <span class="text-danger fa fa-circle"></span>
               Maus-tratos
             </div>
-            <div role="menuitem" class="dropdown-item">
+            <div role="menuitem" class="dropdown-item" (click)="setCategory('abandono')">
               <span class="text-info fa fa-circle"></span>
-              Perdidos
+              Abandono
             </div>
-            <div role="menuitem" class="dropdown-item">
+            <div role="menuitem" class="dropdown-item" (click)="setCategory('nocivo')">
               <span class="text-secondary fa fa-circle"></span>
               Situação nociva a saúde
             </div>
@@ -47,8 +47,10 @@
   </nav> -->
 
   <div class="nav flex-column flex-nowrap over-x h-100 w-100 zz">
-      <app-side-menu-card *ngFor="let a of array"
-      [routerLink]="['info', a]" routerLinkActive="igo" class="pow"></app-side-menu-card>
+      <app-side-menu-card 
+       routerLinkActive="igo" class="pow" [data]='data$'
+       [empty$]="empty$"
+       ></app-side-menu-card>
       
   </div>
   <div class="toggler-content">

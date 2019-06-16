@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, Input } from '@angular/core';
 
 @Component({
   selector: 'app-select',
@@ -7,13 +7,13 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '
 })
 export class SelectComponent implements OnInit {
 
-  title: any  =  'CATEGORIA';
-  @ViewChild('titulo') tittleElement: ElementRef;
+  @Input() title: any  =  'CATEGORIA';
+  @ViewChild('titulo') titleElement: ElementRef;
   
-  itens: any[] = [
-    {type: 'danger', value: 'maus-tratos', label: 'Maus-tratos'},
-    {type: 'info', value: 'perdido', label: 'Perdido'},
-    {type: 'secondary', value: 'nocivo-a-saude', label: 'Situação nociva a saúde'},
+  @Input() itens: any[] = [
+    {key: 'maus-tratos', name: 'Maus-tratos'},
+    {key: 'abandono', name: 'Abandono'},
+    {key: 'nocivo-a-saude', name: 'Situação nociva a saúde'},
   ];
 
   @Output() selected: EventEmitter<any> = new EventEmitter();
@@ -23,11 +23,11 @@ export class SelectComponent implements OnInit {
   ngOnInit() {
   }
 
-  abc(value: string, event){
-    this.tittleElement.nativeElement.innerHTML = event.target.innerHTML;
-    this.selected.emit(value);
-    console.log(this.tittleElement.nativeElement)
-    console.log(value);
+  change(key: string, event){
+    this.titleElement.nativeElement.innerHTML = event.target.innerHTML;
+    let data =  this.itens.find(i=> i.key == key)
+    data = JSON.stringify(data)
+    this.selected.emit(data)
   }
 
 }

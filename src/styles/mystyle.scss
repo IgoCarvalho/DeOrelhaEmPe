@@ -17,3 +17,16 @@
 html,body{
     background-color: $light;
 }
+
+.text-collapse{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.mapboxgl-ctrl-geocoder-lg { 
+    min-width:100%;
+    width: 100% !important;
+    max-width: 100% !important; 
+    box-shadow: none !important;
+}

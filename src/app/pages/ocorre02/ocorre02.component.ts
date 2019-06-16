@@ -3,22 +3,24 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { MapService } from 'src/app/services/map.service';
+import { OccurrenceService } from 'src/app/services/occurrence.service';
+
+import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
   selector: 'app-ocorre02',
   // template: '',
   templateUrl: './ocorre02.component.html',
-  styles: [`
-    .mapa{
-      width: 100%;
-      height: 300px;
-    }
-  `]
-  // styleUrls: ['./ocorre02.components.scss']
+  styleUrls: ['./ocorre02.component.scss']
 })
 export class Ocorre02Component implements OnInit {
+
+  map: mapboxgl.Map;
+  geocoder: mapboxgl.MapboxGeocoder;
+  marker: mapboxgl.Marker;
 
   data: any;
   teste = '';
@@ -28,81 +30,105 @@ export class Ocorre02Component implements OnInit {
   images = [];
   imagesPre = [];
 
+  markerSource: any;
+  markerData = []
 
-  visible: number = 1;
-  
-  @ViewChild('oForm') form;
+
+  step: number = 1;
+
+  @ViewChild('oForm') form: NgForm;
   @ViewChild('file') formFile;
-  
+
 
   constructor(
     private mapService: MapService,
+    private ocService: OccurrenceService,
     private http: HttpClient
-    ) {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiaWdvY2FydmFsaG8iLCJhIjoiY2p1cnhlb211MWcxcjRkbnRjdDFpeGExZSJ9.zCy_6DkI8tpXunft_yKkew';
-    
-  }
+  ) { }
 
-  onSubmit(){
+  onSubmit(oForm) {
     let form = <HTMLFormElement>document.getElementById('myForm')
 
     let formData = new FormData(form)
+
+    formData.append('userId', "5cfa74d981cec432ef538975")// excluir
     
     formData.delete('file')
-    this.images.map((data:File)=>{formData.append('file', data)})
+    console.log(this.images)
+    this.images.map((data: File) => { formData.append('file', data) })
 
-    formData.append('geo', JSON.stringify(this.data))
-    // console.log(this.formFile.nativeElement.files);
-    this.http.post('http://localhost:3003/api/images', formData).subscribe(res=>{
+    formData.append('geoData', JSON.stringify(this.data))
+
+    this.ocService.save(formData).subscribe((res) => {
       console.log(res);
-      
     })
-    
+
   }
 
-  onChange(event){
+  addFile(event) {
     console.log(event.srcElement.files)
-    let files = Array.from(event.srcElement.files)
+    let files: File[] = Array.from(event.srcElement.files)
+    let isFull: boolean = false;
 
-    files.map((file:File)=>{
-      this.images.push(file)
+    for (let file of files) {
+      console.log(this.imagesPre.length)
+      if (this.imagesPre.length < 5) {
+        let fileReader = new FileReader()
 
-      let fileReader = new FileReader()
+        fileReader.onloadend = () => {
+          if (this.imagesPre.length < 5) {
+            console.log('pprimeira imagem processada')
+            
+            this.images.push(file)
+            console.log(this.images);
 
-      fileReader.onloadend = () =>{
-        let img = fileReader.result;
+            let img = fileReader.result;
 
-        let imgData = {
-          img,
-          name: file.name
+            let imgData = {
+              img,
+              name: file.name
+            }
+
+            this.imagesPre.push(imgData)
+          }
+            
+          
+          isFull = true  //todo notification
+        
+          console.log(this.imagesPre);
+
         }
 
-        this.imagesPre.push(imgData)
-        
-        // this.imagensPro.push(fileReader.result)
-        console.log(this.imagesPre);
+        fileReader.readAsDataURL(file)
 
+      } else {
+        isFull = true
       }
 
-      fileReader.readAsDataURL(file)
+    };
+    console.log('fim do loop')
 
-    })    
+
+    isFull ? alert('cheio')
+      : console.log('aa'); //todo
+
 
   }
 
-  removeData(index){
+  removeFile(index) {
     this.imagesPre.splice(index, 1)
     this.images.splice(index, 1)
   }
 
 
-  zzz(event){
+  zzz(event) {
     let files = Array.from(event.files)
     console.log(event);
     // this.aad = new FileList()
-    files.map(a=>{console.log(a);
+    files.map(a => {
+      console.log(a);
     })
-    
+
 
     let form = <HTMLFormElement>document.getElementById('myForm')
     // let formData = {
@@ -120,7 +146,7 @@ export class Ocorre02Component implements OnInit {
     let formData = new FormData(form)
     // console.log(formData.getAll('file'));
     formData.delete('file')
-    this.images.map((data:File)=>{formData.append('file', data)})
+    this.images.map((data: File) => { formData.append('file', data) })
     formData.append('igo', JSON.stringify(element))
     /* for (let i = 0; i < files.length; i++) {
       formData.append('file', files[i])
@@ -129,68 +155,105 @@ export class Ocorre02Component implements OnInit {
     } */
     // formData.set('file', this.aad)
     console.log(formData.getAll('file'));
-    
+
     // formData.append('file', image)
     // formData.append('name', 'igo')
     // formData.append('ncasce', 'scasc')
-    this.http.post('http://localhost:3003/api/images', formData).subscribe(res=>{
-      console.log(res);
-      
+  }
+
+  selectCategory(selected) {
+    this.form.form.patchValue({
+      category: selected
     })
   }
 
-  selectCategory(value){
-    this.form.form.patchValue({
-      category: value
-    })
-  }
-  
-  next(form){
-    this.visible++
+  next(form) {
+    this.step++
     console.log(form);
 
   }
-  prev(){
-    this.visible--
+  prev() {
+    this.step--
     console.log(this.form);
-    
+
   }
 
   ngOnInit() {
-    let map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
       // center: [-103.59179687498357, 40.66995747013945],
       center: [-39.016081, -4.970468],
       // center: [-96, 37.8],
-      zoom: 12
+      zoom: 13
     });
 
-    // Add zoom and rotation controls to the map.
-    // map.addControl(new mapboxgl.NavigationControl());
-    var geocoder = new MapboxGeocoder({
+    this.map.on("load", () => {
+      this.marker = new mapboxgl.Marker()
+
+      /* /// create marker source
+      this.map.addSource('marker', {
+        type: 'geojson',
+        data: {
+          type: 'FeatureCollection',
+          features: []
+        }
+      });
+
+      this.markerSource = this.map.getSource('marker')
+
+      /// create marker layer
+      this.map.addLayer({
+        id: 'marker',
+        source: 'marker',
+        type: 'symbol',
+        layout: {
+          'text-field': 'sage',
+          'text-size': 24,
+          'text-transform': 'uppercase',
+          'icon-image': 'marker-15',
+          'text-offset': [0, 1.5]
+        },
+        paint: {
+          'text-color': '#f16624',
+          'text-halo-color': '#fff',
+          'text-halo-width': 2
+        }
+      }); */
+
+    })
+
+    // Add zoom and rotation controls to the this.map.
+    // this.map.addControl(new mapboxgl.NavigationControl());
+    this.geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl
+      mapboxgl: mapboxgl,
+      countries: 'br',
+      language: 'pt-BR',
+      bbox: [
+        -39.233828537,
+        -5.16841249116946,
+        -38.616797359,
+        -4.66521616015307
+      ],
+      flyTo: false,
+      placeholder: 'Endereço',
+      marker: false
     });
 
-    
-    let div = geocoder.onAdd(map);
+
+    let div = this.geocoder.onAdd(this.map);
+    div.className += ' mapboxgl-ctrl-geocoder-lg ';
 
     div.querySelector('svg').remove();
-    
+
     div.querySelector('.mapboxgl-ctrl-geocoder--input').className = ' form-control';
-    
-    // let i = div.querySelector('.mapboxgl-ctrl-geocoder--input');
-    
-    // i.className += ' form-control'
-    
-    // console.log(i)
-    
+
     document.getElementById('geocoder').appendChild(div);
     // console.log(geocoder.onAdd(map));
-    
-    
-    map.on("wheel", event => {
+
+
+    this.map.on("wheel", event => {
       if (event.originalEvent.ctrlKey) {
         return;
       }
@@ -205,7 +268,7 @@ export class Ocorre02Component implements OnInit {
 
       event.preventDefault();
     });
-    map.on('click', (e) => {
+    this.map.on('click', (e) => {
       // document.getElementById('info').innerHTML =
       // e.point is the x, y coordinates of the mousemove event relative
       // to the top-left corner of the map
@@ -216,53 +279,69 @@ export class Ocorre02Component implements OnInit {
       console.log(e);
       this.mapService.getAddress(e.lngLat.lng, e.lngLat.lat).subscribe(res => {
         console.log(res)
-        let data = res.features[0]
-        let geoData: any = {};
-        if((data.id.split('.').shift()) === 'address'){
-          geoData.address = data.text
-        }
-        data.context.map( (i)=>{
+        this.setGeodata(res.features[0])
 
-          if((i.id.split('.').shift()) === 'address'){
-            geoData.address = i.text
-          }
-          if((i.id.split('.').shift()) === 'neighborhood'){
-            geoData.neighborhood = i.text
-          }
-          if((i.id.split('.').shift()) === 'place'){
-            geoData.city = i.text
-          }
-          
-        } )
-        this.data = data.geometry
-        this.setAddress(geoData)
       })
       // this.aa = e.lngLat;
       // console.log(this.aa);
     });
-    geocoder.on("result", (e)=>{
-      this.data = {};
-      this.data.endereco = e.result.text;
-      this.data.coo = e.result.geometry;
-      e.result.context.map( (i)=>{
-        if((i.id.split('.').shift()) === 'neighborhood'){
-          this.data.bairrro = i.text
-        }
-        if((i.id.split('.').shift()) === 'place'){
-          this.data.cidade = i.text
-        }
-        
-        console.log(i.text)
-      } )
-      console.log(e)
+    this.geocoder.on("result", (e) => {
+      this.setGeodata(e.result)
     })
 
   }
-  setAddress(data){
-    this.form.form.patchValue({
-      address: data.address,
-      neighborhood: data.neighborhood,
-      other: data.city
+
+  setGeodata(data) {
+    console.log("xxxxxxxxxxxxxxxxx", data);
+
+    let geoData: any = {};
+    if ((data.id.split('.').shift()) === 'address') {
+      geoData.address = data.text
+    }
+    data.context.map((i) => {
+
+      if ((i.id.split('.').shift()) === 'address') {
+        geoData.address = i.text
+      }
+      if ((i.id.split('.').shift()) === 'neighborhood') {
+        geoData.neighborhood = i.text
+      }
+      if ((i.id.split('.').shift()) === 'place') {
+        geoData.city = i.text
+      }
+
     })
+    this.map.flyTo({
+      center: data.geometry.coordinates
+    })
+    this.data = {
+      type: data.type,
+      properties: data.properties,
+      geometry: data.geometry
+    }
+    this.setAddress(geoData)
+    this.setMarker(data)
+  }
+
+  setAddress(data) {
+    this.geocoder.setInput(data.address)
+
+    this.form.form.patchValue({
+      address: {
+        street: data.address,
+        neighborhood: data.neighborhood
+      }
+    })
+  }
+  setMarker(data) {
+    let { type, geometry } = data
+
+    console.log(geometry.coordinates);
+    this.marker
+      .setLngLat(geometry.coordinates)
+      .addTo(this.map)
+
+
+    // this.markerSource.setData({ type, geometry })
   }
 }

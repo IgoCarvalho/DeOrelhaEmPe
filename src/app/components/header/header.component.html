@@ -18,7 +18,7 @@
         <a class="nav-link" routerLink="/user">Leis</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" href="#" routerLink="#">Ações Educativas</a>
+        <a class="nav-link"  [routerLink]="[{ outlets: { popup: ['home'] } }]">Ações Educativas</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" href="#" routerLink="/mapa">Dúvidas Frequentes</a>
@@ -27,7 +27,7 @@
 
     <ul *ngIf="!authService.isLoged()" class="navbar-nav ml-auto">
       <li class="nav-item ">
-        <app-button routerLink="/1" type="danger"> Denunciar </app-button>
+        <app-button routerLink="/ocorrencia" type="danger"> Denunciar </app-button>
       </li>
     </ul>
 

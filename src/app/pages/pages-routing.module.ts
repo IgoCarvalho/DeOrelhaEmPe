@@ -19,7 +19,7 @@ const routes: Routes = [
       {path: '', component: MapComponent},
     ]},
     {path: '1',canActivate: [AuthGuard] ,component: Ocorre01Component},
-    {path: '2', component: Ocorre02Component},
+    {path: 'ocorrencia', component: Ocorre02Component},
     {path: '3', component: Ocorre03Component},
     {path: 'ccz', component: CczComponent, 
     children: [

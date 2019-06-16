@@ -20,28 +20,16 @@
     width: 50%;
     height: auto;
     // overflow: hidden;
-<<<<<<< HEAD
     position: absolute;
     display: inline-flex;
     align-items: center;
     justify-content: center;   
 }
-.etapa{
-    // width: 70%;
-    // height: auto;
-    margin-right: 30%;
-=======
-    text-align: center;
-    // position: absolute;
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;   
-}
+
 .etapa{
     width: 70px;
     height: auto;
     margin-right: 10%;
->>>>>>> development
     text-align: center;
     font-size: 12px;
     display: inline-block;
@@ -65,26 +53,12 @@
 }
 #tres{
     margin-right: 0;
-<<<<<<< HEAD
     width: 50px;
     p{
         left: -26%;
     }
 }
-// .linha{
-//     width: 6%;
-//     height: 2px;
-//     background-color: #006051;
-//     position: absolute;
-//     bottom: 72%;
-//     z-index: -1;  
-// }
-.bloco-form{
-    width: 80%;
-    height: auto;
-=======
-    padding-right: 0;
-}
+
 .linha{
     // width: 90%;
     display: inline-block;
@@ -97,7 +71,6 @@
 .bloco-form{
     // width: 70%;
     // height: auto;
->>>>>>> development
     box-shadow: 0 7px 14px 0 rgba(59, 65, 94, 0.253), 0 3px 6px 0 rgba(0, 0, 0, 0.192);
     border-radius: 10px;
     // margin-top: 50px;
