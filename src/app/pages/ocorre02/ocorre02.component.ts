@@ -8,6 +8,8 @@ import { OccurrenceService } from 'src/app/services/occurrence.service';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -43,10 +45,17 @@ export class Ocorre02Component implements OnInit {
   constructor(
     private mapService: MapService,
     private ocService: OccurrenceService,
-    private http: HttpClient
+    private router:Router,
+    private toaster: ToastrService
   ) { }
 
   onSubmit(oForm) {
+
+    if(!oForm.valid) { 
+      this.toaster.warning('Existem campos em ranco no formulário', 'Validação') 
+      return
+    }
+    
     let form = <HTMLFormElement>document.getElementById('myForm')
 
     let formData = new FormData(form)
@@ -57,10 +66,14 @@ export class Ocorre02Component implements OnInit {
     console.log(this.images)
     this.images.map((data: File) => { formData.append('file', data) })
 
+    let cat = JSON.parse(this.form.value.category)
+    this.data.properties.category = cat.key
     formData.append('geoData', JSON.stringify(this.data))
 
     this.ocService.save(formData).subscribe((res) => {
       console.log(res);
+      this.toaster.success('Occorrência realizada com sucesso', 'Ocorrência')
+      this.router.navigate(['/home'])
     })
 
   }
@@ -78,15 +91,20 @@ export class Ocorre02Component implements OnInit {
         fileReader.onloadend = () => {
           if (this.imagesPre.length < 5) {
             console.log('pprimeira imagem processada')
+            let img:any;
             
             this.images.push(file)
             console.log(this.images);
-
-            let img = fileReader.result;
+            if(file.type.includes('video')){
+              img = '../../../assets/img/video-preview.png';
+            }
+              img = fileReader.result
+            
 
             let imgData = {
               img,
-              name: file.name
+              name: file.name,
+              type: file.type
             }
 
             this.imagesPre.push(imgData)

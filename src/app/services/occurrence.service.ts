@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { OccurrenceDataService } from './occurrence-data.service';
-import { take, pluck, catchError, tap, retry } from 'rxjs/operators';
+import { take, pluck, catchError, tap, retry, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -18,12 +18,12 @@ export class OccurrenceService {
 
   getAll(){
     this.http.get(`${this.url}`).pipe(
-      pluck('oc'),
+      pluck('occ'),
       tap((x)=>{console.log('OBSERVABLE')}),
       retry(2),
       tap((x)=>{console.log('OBSERVABLE2')}),
       
-      tap((x)=>{console.log('OBSERVABLE3')}),
+      
     ).subscribe(
       (res: any)=>{ console.log(res);
        this.occDataService.setData(res) }
@@ -39,15 +39,30 @@ export class OccurrenceService {
   }
 
   save(oc){
-    return this.http.post(`${this.url}`, oc)
+    return this.http.post(`${this.url}`, oc).pipe(
+      pluck('occ'),
+      tap((res)=>{
+        this.occDataService.addData(res)
+      })
+    )
   }
 
   coment(coment){
-    return
+    return this.http.post(`${this.url}/coment`, coment).pipe(
+      pluck('occ'),
+      tap((res)=>{
+        this.occDataService.updateData(res)
+      })
+    )
   }
 
-  update(up){
-    return
+  updateStatus(up){
+    return this.http.post(`${this.url}/updatestatus`, up).pipe(
+      pluck('occ'),
+      tap((res)=>{
+        this.occDataService.updateData(res)
+      })
+    )
   }
   
 }

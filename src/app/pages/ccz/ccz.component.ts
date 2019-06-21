@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OccurrenceDataService } from 'src/app/services/occurrence-data.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-ccz',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CczComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private occDataService: OccurrenceDataService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit() {
+    this.occDataService.setCzz()
   }
 
 }

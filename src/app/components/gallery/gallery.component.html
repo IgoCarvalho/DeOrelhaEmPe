@@ -1,7 +1,7 @@
 <div *ngIf="images" class="row">
   <div *ngFor="let i of images" class="col-2">
     <div class="rounded p-1 shadow-sm gallery-item">
-      <img (click)="openModal(template)" class="gallery-image" [src]="i" alt="">
+      <img (click)="openModal(template)" class="gallery-image" [src]="i.url" alt="">
     </div>
   </div>
 </div>

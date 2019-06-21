@@ -1,13 +1,13 @@
 <div class="container-fluid ">
-    <div class="row vh-100">
-        <div id="sidebar-wapper" class="col-3 h-100" [ngClass]="{' ml--3': !toggle}">
+    <div class="row h-100">
+        <div id="sidebar-wapper" class="col-3 vh-100 sticky-top" [ngClass]="{' ml--3': !toggle}">
             <app-side-menu (toggler)="toggler()" ></app-side-menu>
 
         </div>
-        <div class="col h-100 px-0 overflow-auto">
+        <div class="col min-vh-100 px-0 overflow-auto">
                 <router-outlet></router-outlet>
-                <button class="btnx btnx-danger float" routerLink="/1">Realizar Denuncia</button>
+                <button class="btnx btnx-danger float" routerLink="/ocorrencia">Realizar Denuncia</button>
+                
         </div>
     </div>
 </div>
-<router-outlet name="popup"></router-outlet>

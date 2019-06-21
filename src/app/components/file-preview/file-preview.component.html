@@ -12,8 +12,11 @@
       <ul *ngIf="files" class="list-group list-group-flush">
           <li *ngFor="let f of files; index as i" class="py-2 d-flex align-items-center justify-content-between list-group-item">
             
-              <div class=" img-prev"  [ngStyle]='{"background-image": "url("+f.img+")"}'> </div>
-              
+              <div *ngIf="f.type.includes('image'); else video" class=" img-prev"  [ngStyle]='{"background-image": "url("+f.img+")"}'> </div>
+              <ng-template #video>
+
+                <video class="img-prev"  src="{{f.img}}"></video>
+              </ng-template>
             
             <div class="px-2 text-collapse">
               

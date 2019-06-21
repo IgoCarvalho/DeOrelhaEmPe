@@ -6,19 +6,25 @@
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div *ngIf="!(authService.isAdm())" class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <!-- <li class="nav-item " routerLinkActive="active">
           <a class="nav-link" routerLink="/" >Home <span class="sr-only">(current)</span></a>
         </li> -->
       <li class="nav-item " routerLinkActive="active">
-        <a class="nav-link" routerLink="/home">Sistema</a>
+        <a class="nav-link" routerLink="/home">Inicio</a>
+      </li>
+      <li class="nav-item " routerLinkActive="active">
+        <a class="nav-link" routerLink="#">Orgãos</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="/user">Leis</a>
+        <a class="nav-link" routerLink="#">Mapa</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link"  [routerLink]="[{ outlets: { popup: ['home'] } }]">Ações Educativas</a>
+        <a class="nav-link" [routerLink]="[{ outlets: { popup: ['home'] } }]">Leis</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="[{ outlets: { popup: ['home'] } }]">Ações</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" href="#" routerLink="/mapa">Dúvidas Frequentes</a>
@@ -33,64 +39,64 @@
 
     <ul *ngIf="authService.isLoged()" class="navbar-nav ml-auto">
       <!-- Notificacoes -->
-      
+
       <div dropdown class=" nav-item dropdown d-flex align-items-center">
-          <a dropdownToggle class="no-dd-icon nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
+        <a (click)="count = 0" dropdownToggle class="no-dd-icon nav-link dropdown-toggle" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-bell "></i>
-          
-          </a>
-          <div *dropdownMenu role="menu" class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-
-            <div class="dropdown-item border-bottom d-flex align-items-center">
+          <span *ngIf="notifications.length >0 && count >0" class="badge badge-danger" > {{count}} </span>
+        </a>
+        <div *dropdownMenu role="menu" class="dropdown-menu dropdown-menu-right animate slideIn"
+          aria-labelledby="navbarDropdown">
+          <span *ngIf="notifications">
+            <div *ngFor="let n of notifications" class="bg-light dropdown-item border-bottom d-flex align-items-center">
               <div class="mr-3">
                 <div class="icon-circle bg-primary">
                   <i class="fas fa-file-alt text-white"></i>
                 </div>
               </div>
               <div>
-                <div class="small text-gray-500">December 12, 2019</div>
-                <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                <div class="small text-gray-500"> {{ n.title }} </div>
+                <a class="font-weight-bold" routerLink="/home/info/{{n.id}}"> {{ n.text }} </a>
               </div>
             </div>
+          </span>
 
-            <div class="dropdown-item d-flex align-items-center">
-              <div class="mr-3">
-                <div class="icon-circle bg-primary">
-                  <i class="fas fa-file-alt text-white"></i>
+                <div *ngIf="notifications==0" class="dropdown-item border-bottom d-flex align-items-center py">
+                  Você não tem notificações
                 </div>
-              </div>
-              <div>
-                <div class="small text-gray-500">December 12, 2019</div>
-                <span class="font-weight-bold">A new monthly report is ready to download!</span>
-              </div>
-            </div>
 
-          </div>
+        </div>
+        
       </div>
 
       <div dropdown class=" nav-item dropdown">
-          <a dropdownToggle class="no-dd-icon nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          <span class="px-2" >
-            
+        <a dropdownToggle class="no-dd-icon nav-link dropdown-toggle" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="px-2">
+
             {{ authService.getUser().name }}
             <!--User Name-->
           </span>
           <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40"
             height="40" class="rounded-circle">
         </a>
-          <div *dropdownMenu role="menu" class="dropdown-menu dropdown-menu-right custom-dropdown-menu text-center animate slideIn" aria-labelledby="navbarDropdown">
+        <div *dropdownMenu role="menu"
+          class="dropdown-menu dropdown-menu-right custom-dropdown-menu text-center animate slideIn"
+          aria-labelledby="navbarDropdown">
 
-            <div role="menuitem" class="dropdown-item"> Configuracoes </div>
-            <div role="menuitem" class="dropdown-item">Minhas ocorrencias</div>
-            
-            <div class="dropdown-divider"></div>
-            
-            <div role="menuitem" class="dropdown-item">Sair</div>
+          <div role="menuitem" class="dropdown-item"> Configuracoes </div>
+          <div role="menuitem" class="dropdown-item">Minhas ocorrencias</div>
 
-          </div>
+          <div class="dropdown-divider"></div>
+
+          <a role="menuitem" class="dropdown-item" (click)="logOut()">
+
+            Sair
+          </a>
+
         </div>
+      </div>
     </ul>
 
   </div>

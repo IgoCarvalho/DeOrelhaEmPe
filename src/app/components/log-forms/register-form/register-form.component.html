@@ -27,7 +27,7 @@
   </div>
 </div>
 <hr data-content="OU" class="hr-text text-primary">
-<form class="form" role="form" #rForm="ngForm" (ngSubmit)="submit()">
+<form class="form" role="form" #rForm="ngForm" (ngSubmit)="submit(rForm)">
   <div class="form-group">
     <label for="name">Nome</label>
     <small *ngIf="nome.invalid && rForm.submitted" class="float-right text-danger">Nome invalido</small>
@@ -74,8 +74,9 @@
   <div class="form-check custom-control custom-checkbox small">
     <input type="checkbox" class="custom-control-input" id="formCheck1">
     <label class="custom-control-label" for="formCheck1">
-      | Concordo com os <a class="text-link" href="">Termos de privacidade</a>
+      | Concordo com os 
     </label>
+    <a class="text-link" href=""> Termos de privacidade</a>
   </div>
   <div class="form-group mt-3">
     <button class="btnx btnx-primary btn-block" type="submit">Cadastrar</button>

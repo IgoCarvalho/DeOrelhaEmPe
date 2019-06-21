@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 
 // Componentes bootstrap
 import { BootstrapModule } from '../bootstrap.module';
@@ -48,7 +50,8 @@ import { FilePreviewComponent } from './file-preview/file-preview.component';
     ComponentsRoutingModule,
     BootstrapModule,
     CarouselModule,
-    HttpClientModule
+    HttpClientModule,
+    NgMultiSelectDropDownModule.forRoot()
   ],
   exports: [
     ComponentsComponent,

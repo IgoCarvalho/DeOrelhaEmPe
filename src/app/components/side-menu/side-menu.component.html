@@ -1,29 +1,43 @@
-<div class="side-menu row p-3 bg-primary-l h-100 flex-column flex-nowrap ">
-  <form >
-    <h4 class="px-2 text-white" >Ocorrências</h4>
+<div class="side-menu row px-3 bg-primary-l h-100 flex-column flex-nowrap ">
+  <form>
+    <h4 class="px-2 text-white">Ocorrências</h4>
 
     <div class="form-row flex-nowrap">
       <div class="form-group w-100 has-search">
         <span class="text-secondary fa fa-search form-control-feedback"></span>
-        <input type="text" class="form-control" placeholder="Pesquisar" #s (keyup)="search(s.value)" >
+        <input type="text" class="form-control" placeholder="Pesquisar" #s (keyup)="search(s.value)">
       </div>
       <div class="form-group ml-2">
+        <!-- <ng-multiselect-dropdown
+          [placeholder]="''"
+          [data]="dropdownList"
+          [settings]="dropdownSettings"
+          (onSelect)="onItemSelect($event)"
+          (onSelectAll)="onSelectAll($event)"
+          (onFilterChange)="onFilterChange($event)"
+        >
+        </ng-multiselect-dropdown> -->
         <div dropdown class="dropdown">
           <button dropdownToggle id="dLabel" class="no-dd-icon btn btn-outline-primary bg-white" type="button">
             <i class="text-secondary fa fa-filter"></i>
           </button>
-          <div *dropdownMenu role="menu" class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="dLabel">
+          <div *dropdownMenu role="menu" class="dropdown-menu dropdown-menu-right animate slideIn"
+            aria-labelledby="dLabel">
 
+            <div role="menuitem" class="dropdown-item" (click)="setCategory('')">
+              <span class="text-gray fa fa-circle"></span>
+              Todos
+            </div>
             <div role="menuitem" class="dropdown-item" (click)="setCategory('maus-tratos')">
-              <span class="text-danger fa fa-circle"></span>
+              <span class="text-maus-tratos fa fa-circle"></span>
               Maus-tratos
             </div>
             <div role="menuitem" class="dropdown-item" (click)="setCategory('abandono')">
-              <span class="text-info fa fa-circle"></span>
+              <span class="text-abandono fa fa-circle"></span>
               Abandono
             </div>
-            <div role="menuitem" class="dropdown-item" (click)="setCategory('nocivo')">
-              <span class="text-secondary fa fa-circle"></span>
+            <div role="menuitem" class="dropdown-item" (click)="setCategory('nocivo-a-saude')">
+              <span class="text-nocivo-a-saude fa fa-circle"></span>
               Situação nociva a saúde
             </div>
 
@@ -33,7 +47,7 @@
       </div>
     </div>
 
-    <hr class="w-100 bg-primary mt-0 mb-3" >
+    <hr class="w-100 bg-primary mt-0 mb-3">
 
 
   </form>
@@ -47,16 +61,14 @@
   </nav> -->
 
   <div class="nav flex-column flex-nowrap over-x h-100 w-100 zz">
-      <app-side-menu-card 
-       routerLinkActive="igo" class="pow" [data]='data$'
-       [empty$]="empty$"
-       ></app-side-menu-card>
-      
+    <app-side-menu-card routerLinkActive="igo" class="pow" [data]='data' [empty$]="empty$"></app-side-menu-card>
+
   </div>
+  <br>
   <div class="toggler-content">
     <div (click)="toggle()" class="menu-toggler px-2 bg-primary-l text-secondary" [ngClass]="{' animation': !isactive}">
-      <i class="fas fa-angle-left fa-2x" ></i>
+      <i class="fas fa-angle-left fa-2x"></i>
     </div>
   </div>
-  
+
 </div>

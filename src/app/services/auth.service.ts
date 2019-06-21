@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { tap, shareReplay } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,24 +15,24 @@ export class AuthService {
   private url = environment.api_url;
   // private url = 'http://localhost:3003';
 
-  constructor( private http: HttpClient ) { }
+  constructor( 
+    private http: HttpClient, 
+    private router: Router
+  ) { }
 
   private setSession(data) {
     const token = data.token;
     const userData = btoa(JSON.stringify(data.user)); 
-    // const expiresAt = moment.unix(payload.exp);
 
     localStorage.setItem('token', token);
     localStorage.setItem('user', userData);
-    // localStorage.setItem('user', btoa(JSON.stringify(data.user)));
-    // localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
   }
 
 
   login(params: {email: string, password: string}) {
     return this.http.post<any>(`${this.url}/users/signin`, params).pipe(
       tap(
-        (res) => {console.log('adicionando token ao locahost'); this.setSession(res); shareReplay()},
+        (res) => {console.log('adicionando token ao locahost'); this.setSession(res);},
         (erro) => console.log('eroo ao adicionar token ao locahost', erro),
         () => console.log('TERMINADO')
         )
@@ -44,13 +45,14 @@ export class AuthService {
   logout(){
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    this.router.navigate(['/'])
   }
 
   registro(userData){
 
-    return this.http.post(`${this.url}/api/signup`, userData).pipe(
+    return this.http.post(`${this.url}/users/signup`, userData).pipe(
       tap(
-        (res) => {console.log('adicionando token ao locahost'); this.setSession(res); shareReplay()},
+        (res) => {console.log('adicionando token ao locahost'); this.setSession(res);},
         (erro) => console.log('eroo ao adicionar token ao locahost', erro),
         () => console.log('TERMINADO')
         )
@@ -62,7 +64,15 @@ export class AuthService {
     return localStorage.getItem('user')? true : false;
   }
 
+  isAdm(){
+    if(!this.isLoged()) return
+    const adm = this.getUser()
+    // console.log(adm)
+    return adm.roles.indexOf('admin') >= 0? true: false
+  }
+
   getUser(){
+    if(!this.isLoged()) return
     const user =  JSON.parse(atob(localStorage.getItem('user')));
     return user;
   }

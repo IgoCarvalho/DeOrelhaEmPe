@@ -1,4 +1,4 @@
-<div *ngIf="data | async as occ; else erro">
+<div *ngIf="data as occ; else erro">
 
   <div *ngIf="occ.length > 0; else empty">
     <div *ngFor="let o of occ">

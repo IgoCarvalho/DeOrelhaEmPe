@@ -11,6 +11,7 @@ import { MapComponent } from '../components/map/map.component';
 import { CczComponent } from './ccz/ccz.component';
 import { CczComplaintsComponent } from '../components/ccz-complaints/ccz-complaints.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { AdmGuardService } from '../guards/adm-guard.service';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, 
@@ -19,9 +20,9 @@ const routes: Routes = [
       {path: '', component: MapComponent},
     ]},
     {path: '1',canActivate: [AuthGuard] ,component: Ocorre01Component},
-    {path: 'ocorrencia', component: Ocorre02Component},
-    {path: '3', component: Ocorre03Component},
-    {path: 'ccz', component: CczComponent, 
+    {path: 'ocorrencia',canActivate: [AuthGuard] , component: Ocorre02Component},
+    {path: '3',canActivate: [AuthGuard] , component: Ocorre03Component},
+    {path: 'ccz',canActivate: [AuthGuard, AdmGuardService] , component: CczComponent, 
     children: [
       {path: '', component: CczComplaintsComponent},
       {path: 'info/:id', component: CardComponent},

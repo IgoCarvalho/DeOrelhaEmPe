@@ -15,6 +15,7 @@
     min-width: 8rem;
     margin-right: 5px;
     font-size: 1rem;
+    font-weight: bold;
     line-height: 1.5;
     border-radius: 0.5rem;
     outline: none !important;
@@ -80,4 +81,8 @@
 	bottom:40px;
 	right:40px;
 	
+}
+
+.link-unstyled:hover{
+    text-decoration: none !important;
 }

@@ -19,9 +19,9 @@
   </div>
 </div>
 
-<hr data-content="OU" class="hr-text text-primary">
+<hr data-content="Ou" class="hr-text text-muted">
 
-<form class="needs-validation " novalidate role="form" #uForm="ngForm" (ngSubmit)="teste(uForm)">
+<form class="needs-validation " novalidate role="form" #uForm="ngForm" (ngSubmit)="onSubmit(uForm)">
   <div class="form-group">
     <label for="email">Email</label>
     <small *ngIf="email.invalid && uForm.submitted" class="float-right text-danger">Email invalido</small>
@@ -41,19 +41,20 @@
     }"
     #senha="ngModel"
      ngModel required>
+    <a routerLink='' class="float-right font-weight-bold text-dark pt-2 pb-3">
+      <small>Esqueceu a senha ?</small>
+    </a>
+
   </div>
-  <div class="form-check custom-control custom-checkbox small">
+  <!-- <div class="form-check custom-control custom-checkbox small">
       <input type="checkbox" class="custom-control-input" id="formCheck1">
       <label class="custom-control-label" for="formCheck1">
           | Lembre-se de mim neste computador.
       </label>
-  </div>
+  </div> -->
   <button class="btnx btnx-primary  btn-block mt-3" type="submit">Entrar</button>
-  <hr data-content="NÃO POSSUI CONTA ?" class="hr-text text-primary">
-  <div class="form-group mt-3">
-    <button [routerLink]="['/user/cad']" class="btnx btnx-secondary  btn-block mt-3" type="button" 
-    tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-      Cadastre-se</button>
+  <hr data-content="Não possui conta ?" class="hr-text text-muted">
+  <div class="form-group mt-3 text-center">
+    <a routerLink="/user/cad" type="button" class="font-weight-bold link-unstyled text-primary" >Cadastre-se aqui</a>
   </div>
-  
 </form>

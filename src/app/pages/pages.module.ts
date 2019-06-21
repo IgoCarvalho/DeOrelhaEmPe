@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 // Modulo de componentes
@@ -22,6 +23,7 @@ import { CczComponent } from './ccz/ccz.component';
   declarations: [HomeComponent, ApresentationComponent, Ocorre01Component, Ocorre02Component, Ocorre03Component, CczComponent],
   imports: [
     CommonModule,
+    BrowserAnimationsModule,
     FormsModule,
     ComponentsModule,
     PagesRoutingModule,

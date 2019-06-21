@@ -8,7 +8,7 @@ import { Observable, Subject } from 'rxjs';
 })
 export class SideMenuCardComponent implements OnInit {
 
-  @Input() data: Observable<any[]>;
+  @Input() data: any[];
   @Input() empty$: Subject<boolean>;
   array: any[] = ['1','2','3','4','5'];
   

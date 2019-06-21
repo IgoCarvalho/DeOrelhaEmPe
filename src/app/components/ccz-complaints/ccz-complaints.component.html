@@ -1,26 +1,26 @@
 <div class="container p-5">
-  <div class="container p-4">
-    <div class="container d-flex align-items-center justify-content-between shadow-sm text-light p-3 m-3 rounded"
-    [routerLink]="['info', 1]">
+  <div *ngIf="data | async as data$" class="container p-4">
+    <div *ngFor="let o of data$" class="container d-flex align-items-center justify-content-between shadow-sm text-light p-3 m-3 rounded"
+    [routerLink]="['info', o._id]">
       <div>
         <div class="rounded-circle foto bg-primary"></div>
-        <b>Ismael</b>
+        <b>{{o.user.name}}</b>
       </div>
       <div>
-        <p class="text-uppercase font-weight-bold m-0">cachorro amarrado</p>
+        <p class="text-uppercase font-weight-bold m-0">{{ o.title }}</p>
       </div>
       <div>
         <p class="m-0">Categoria:</p>
         <div class="d-flex align-items-center">
-          <div class="rounded-circle cat bg-light"></div>
-          <p class="m-0 font-weight-bold">Maus Tratos</p>
+          <div class="rounded-circle cat bg-{{o.category.key}}"></div>
+          <p class="m-0 font-weight-bold">{{o.category.name}}</p>
         </div>
       </div>
       <div>
         <p class="m-0">Status:</p>
         <div class="d-flex align-items-center">
-          <div class="rounded-circle cat bg-light"></div>
-          <p class="m-0 font-weight-bold">Recebida</p>
+          <div class="rounded-circle cat bg-{{o.status.key}}"></div>
+          <p class="m-0 font-weight-bold"> {{ o.status.name }} </p>
         </div>
       </div>
       <div class="text-right">

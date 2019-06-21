@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { OccurrenceDataService } from 'src/app/services/occurrence-data.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-ccz-complaints',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CczComplaintsComponent implements OnInit {
 
-  constructor() { }
+  data;
+  
+  constructor(
+    private occDataService: OccurrenceDataService,
+    private not: NotificationService
+  ) { }
 
   ngOnInit() {
+    this.data = this.occDataService.currentOccurrence
+    console.log(this.data)
+    this.not.new().subscribe((res)=>{
+      console.log('NOVA', res)
+      this.occDataService.addData(res)
+    })
   }
 
 }

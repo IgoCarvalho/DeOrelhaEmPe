@@ -6,3 +6,21 @@
 // fix geocoder input
 
 
+.selected-item{
+    display: none
+}
+.dropdown-btn>span{
+    display: none
+}
+.dropdown-list{
+    width: max-content!important
+}
+
+.multiselect-item-checkbox input[type=checkbox] + div:before {
+    border-color: #006052!important;
+    border-radius: 4px!important;
+    color: #006052!important;
+}
+.multiselect-item-checkbox input[type=checkbox]:checked + div:before {
+    background-color: #078472!important;
+}

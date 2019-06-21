@@ -4,6 +4,7 @@ import { Router } from'@angular/router';
 import {HttpErrorResponse} from '@angular/common/http'
 
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-form',
@@ -16,7 +17,10 @@ export class LoginFormComponent implements OnInit {
   
   constructor(
     private authService: AuthService,
-    private router: Router) { }
+    private router: Router,
+    private toaster: ToastrService
+
+  ) { }
 
   ngOnInit() {
   }
@@ -34,8 +38,16 @@ export class LoginFormComponent implements OnInit {
     if (form.invalid) return;
     
     this.authService.login(form.value).subscribe(
-      (data) => { console.log('DEU CERTO', this.authService.getToken()); this.router.navigate(['/home']); },
-      (error: HttpErrorResponse) => { console.log('DEU ERROR', error); this.erroLogin = true; }
+      (data) => { 
+        console.log('DEU CERTO', this.authService.getToken()); 
+        if(this.authService.isAdm()) {this.router.navigate(['/ccz']); return}
+        this.router.navigate(['/home']);
+      },
+      (error: HttpErrorResponse) => {
+        console.log('DEU ERROR', error);
+        if(error.status == 404) {this.toaster.error(error.error.message, 'Erro'); return}
+        this.toaster.error(error.error.message, 'Erro')
+      }
     )
   }
 

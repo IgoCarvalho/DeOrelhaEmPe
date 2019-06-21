@@ -34,7 +34,8 @@
               "./node_modules/@fortawesome/fontawesome-free/scss/brands.scss",
               "./node_modules/@fortawesome/fontawesome-free/scss/solid.scss",
               "./node_modules/mapbox-gl/dist/mapbox-gl.css",
-              "./node_modules/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css"
+              "./node_modules/@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css",
+              "./node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true

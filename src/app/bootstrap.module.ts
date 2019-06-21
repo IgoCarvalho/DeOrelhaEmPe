@@ -8,7 +8,8 @@ import {
   ModalModule,
   BsDropdownModule,
   TabsModule,
-  TooltipModule
+  TooltipModule,
+  AccordionModule
 } from 'ngx-bootstrap';
 
 @NgModule({
@@ -19,6 +20,7 @@ import {
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     TooltipModule.forRoot(),
+    AccordionModule.forRoot()
   ],
   exports: [
     CarouselModule,
@@ -27,6 +29,7 @@ import {
     BsDropdownModule,
     TabsModule,
     TooltipModule,
+    AccordionModule
   ]
 })
 export class BootstrapModule { }
