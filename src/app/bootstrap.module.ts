@@ -20,7 +20,8 @@ import {
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     TooltipModule.forRoot(),
-    AccordionModule.forRoot()
+    AccordionModule.forRoot(),
+    AccordionModule.forRoot(),
   ],
   exports: [
     CarouselModule,

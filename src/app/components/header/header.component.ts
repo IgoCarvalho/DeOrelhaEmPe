@@ -14,6 +14,7 @@ export class HeaderComponent implements OnInit {
 
   notifications: any[] = [];
   count = 0
+  fixo = false;
   
   constructor(
     private authService: AuthService,
