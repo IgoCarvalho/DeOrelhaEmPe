@@ -40,4 +40,14 @@ html,body{
 
 .fix-height{
     height: calc(100vh - 66px);
+.panel-heading, .card{
+    background-color: #e28935;
+    border: none;
+    margin: 10px;
+}
+.btn-link{
+    color: white;
+}
+.btn-link:hover{
+    color: rgb(201, 201, 201);
 }

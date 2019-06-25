@@ -30,6 +30,10 @@
     width: 70px;
     height: auto;
     margin-right: 10%;
+.etapa{
+    // width: 70%;
+    // height: auto;
+    margin-right: 30%;
     text-align: center;
     font-size: 12px;
     display: inline-block;
@@ -71,6 +75,17 @@
 .bloco-form{
     // width: 70%;
     // height: auto;
+// .linha{
+//     width: 6%;
+//     height: 2px;
+//     background-color: #006051;
+//     position: absolute;
+//     bottom: 72%;
+//     z-index: -1;  
+// }
+.bloco-form{
+    width: 80%;
+    height: auto;
     box-shadow: 0 7px 14px 0 rgba(59, 65, 94, 0.253), 0 3px 6px 0 rgba(0, 0, 0, 0.192);
     border-radius: 10px;
     // margin-top: 50px;
@@ -119,5 +134,4 @@
         margin: 10px;
         width: auto;
     }
-    
 }

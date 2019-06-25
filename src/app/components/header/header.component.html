@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary" [ngClass]="{'fixed-top': !authService.isLoged()}">
   <a class="navbar-brand text-light" routerLink="/">
     <img src="./../../../assets/img/Caminho-18.png" alt="">
   </a>
@@ -12,26 +12,26 @@
           <a class="nav-link" routerLink="/" >Home <span class="sr-only">(current)</span></a>
         </li> -->
       <li class="nav-item " routerLinkActive="active">
-        <a class="nav-link" routerLink="/home">Inicio</a>
+        <a class="nav-link" routerLink="/inicio">Início</a>
       </li>
       <li class="nav-item " routerLinkActive="active">
-        <a class="nav-link" routerLink="#">Orgãos</a>
+        <a class="nav-link" routerLink="/orgaos" >Orgãos</a>
+      </li>
+      <li class="nav-item " routerLinkActive="active">
+        <a class="nav-link" routerLink="/mapa">Mapa</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="#">Mapa</a>
+        <a class="nav-link" routerLink="/leis">Leis</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="[{ outlets: { popup: ['home'] } }]">Leis</a>
+        <a class="nav-link" href="#" routerLink="/acoes">Ações</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="[{ outlets: { popup: ['home'] } }]">Ações</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" href="#" routerLink="/mapa">Dúvidas Frequentes</a>
+        <a class="nav-link" href="#" routerLink="/faq">Dúvidas Frequentes</a>
       </li>
     </ul>
 
-    <ul *ngIf="!authService.isLoged()" class="navbar-nav ml-auto">
+    <ul *ngIf="authService.isLoged()" class="navbar-nav ml-auto">
       <li class="nav-item ">
         <app-button routerLink="/ocorrencia" type="danger"> Denunciar </app-button>
       </li>

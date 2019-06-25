@@ -1,0 +1,57 @@
+<div class="container-fluid w-100 vh-100 bg-primary p-5"
+[ngClass]="{'mt-5': margin}">
+  <div class="text-white w-100">
+    <h2 class="p-4 rounded-top d-inline pb-5" (click)="deveres=false; leis=true" [ngClass]="{'sel': !deveres}">Deveres
+      do CCZ</h2>
+    <h2 class="p-4 rounded-top d-inline pb-5" (click)="deveres=true; leis=false" [ngClass]="{'sel': !leis}">Leis de
+      proteção aos animais</h2>
+  </div>
+  <div class="pb-3 w-100 h-100">
+    <div class="h-100 w-100 sel rounded-bottom rounded-right text-white h4 mt-4" [hidden]="deveres">
+      <p class="p-5">Art. 145 – Cabe ao Núcleo de Controle de Zoonoses da Secretaria Municipal de
+        Saúde de Quixadá, o controle de zoonoses em todo território do Município.
+        <br>
+        <br>
+        Lei Federal: Esta ferramenta é um mecanismo que utiliza a prerrogativa da lei federal nº 9.605 de 12/02/1998, a
+        denúncia de maus tratos é legitimada pelo art. 32 desta lei.
+      </p>
+    </div>
+    <div class="h-100 w-100 sel rounded-bottom rounded-right text-white h5 mt-4" [hidden]="leis">
+      <p class="p-5">
+        Lei nº 5.197 de 1967 - LEI FEDERAL DE PROTEÇÃO À FAUNA
+        <br>
+        <br>
+        Art. 1º. - OS animais de quaisquer espécies, em qualquer fase do seu desenvolvimento e que vivem naturalmente
+        fora do cativeiro, constituindo a fauna silvestre, bem como seus ninhos, abrigos e criadouros naturais são
+        propriedades do Estado, sendo proibida a sua utilização, perseguição, destruição, caça ou apanha.
+        <br>
+        <br>
+        Lei nº 9.605 de 1998 - LEI FEDERAL DE CRIMES AMBIENTAIS
+        <br>
+        <br>
+        Art. 32 - Praticar ato de abuso, maus-tratos, ferir ou mutilar animais silvestres, domésticos ou domesticados,
+        nativos ou exóticos: Pena - detenção, de três meses a um ano, e multa.
+
+        § 1º Incorre nas mesma penas quem realiza experiência dolorosa ou cruel em animal vivo, ainda que para fins
+        didáticos ou científicos, quando existirem recursos alternativos.
+
+        § 2º A pena é aumentada de um sexto a um terço, se ocorre morte do animal.
+        <br>
+        <br>
+        DECRETO LEI Nº 24.645 DE 1934 - Estabelece medidas de Proteção aos Animais
+        <br>
+        <br>
+        Art. 1 - Todos os animais existentes no País são tutelados do Estado.
+        Art. 3 - Consideram-se maus tratos:
+        I - Praticar ato de abuso ou crueldade em qualquer animal.
+        II - Manter animais em lugares anti-higiênicos ou que lhes impeçam a respiração, o movimento ou o descanso, ou
+        os privem de ar ou luz [...]
+        Art. 16 - As autoridades federais, estaduais e municipais prestarão aos membros das sociedades protetoras de
+        animais a cooperação necessário para fazer cumprir a presente Lei.
+        Art. 17 - A palavra animal, da presente Lei, compreende todo ser irracional, quadrúpede, ou bípede, doméstico ou
+        selvagem, exceto os daninhos.
+
+      </p>
+    </div>
+  </div>
+</div>
