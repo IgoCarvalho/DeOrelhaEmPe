@@ -10,6 +10,7 @@ import { Ocorre03Component } from './ocorre03/ocorre03.component';
 import { MapComponent } from '../components/map/map.component';
 import { CczComponent } from './ccz/ccz.component';
 import { CczComplaintsComponent } from '../components/ccz-complaints/ccz-complaints.component';
+import { InicioComponent } from '../components/inicio/inicio.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, 

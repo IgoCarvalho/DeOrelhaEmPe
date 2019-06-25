@@ -36,9 +36,15 @@ import { CarouselMultilistComponent } from './carousel-multilist/carousel-multil
 import { MapComponent } from './map/map.component';
 import { CczFormComponent } from './log-forms/ccz-form/ccz-form.component';
 import { CczComplaintsComponent } from './ccz-complaints/ccz-complaints.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { OrgaosComponent } from './orgaos/orgaos.component';
+import { LeisComponent } from './leis/leis.component';
+import { AcoesComponent } from './acoes/acoes.component';
+import { FaqComponent } from './faq/faq.component';
+import { MapaComponent } from './mapa/mapa.component';
 
 @NgModule({
-  declarations: [ComponentsComponent, ButtonComponent, HeaderComponent, FormComponent, DatePickerComponent, TipographyComponent, IconsComponent, ColorsComponent, BrandComponent, ButtonsComponent, CardComponent, SelectComponent, NotificationComponent, CarouselComponent, DialogModalComponent, GalleryComponent, LogFormsComponent, LoginFormComponent, RegisterFormComponent, SideMenuComponent, SideMenuCardComponent, HeaderInicialComponent, CardDesaComponent, CarouselMultilistComponent, MapComponent, CczFormComponent, CczComplaintsComponent],
+  declarations: [ComponentsComponent, ButtonComponent, HeaderComponent, FormComponent, DatePickerComponent, TipographyComponent, IconsComponent, ColorsComponent, BrandComponent, ButtonsComponent, CardComponent, SelectComponent, NotificationComponent, CarouselComponent, DialogModalComponent, GalleryComponent, LogFormsComponent, LoginFormComponent, RegisterFormComponent, SideMenuComponent, SideMenuCardComponent, HeaderInicialComponent, CardDesaComponent, CarouselMultilistComponent, MapComponent, CczFormComponent, CczComplaintsComponent, InicioComponent, OrgaosComponent, LeisComponent, AcoesComponent, FaqComponent, MapaComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -60,7 +66,14 @@ import { CczComplaintsComponent } from './ccz-complaints/ccz-complaints.componen
     ButtonComponent,
     SelectComponent,
     MapComponent,
-    CczComplaintsComponent
+    CczComplaintsComponent,
+    LoginFormComponent,
+    InicioComponent,
+    OrgaosComponent,
+    LeisComponent,
+    AcoesComponent, 
+    FaqComponent,
+    MapaComponent
   ]
 })
 export class ComponentsModule { }
