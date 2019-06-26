@@ -3,13 +3,13 @@
   <div *ngIf="occ.length > 0; else empty">
     <div *ngFor="let o of occ">
 
-      <div routerLinkActive="card-active" class="card border-0 mb-3">
+      <div routerLinkActive="card-active" [routerLink]="['info', o._id]" class="card border-0 mb-3 cursor" >
         <div class="card-header px-2 py-1 bg-white">
           <p [title]="o.title" class="card-tittle text-primary mb-0">
             {{o.title}}
           </p>
         </div>
-        <div class="card-body max-h-50px py-2 bg-white ">
+        <div class="card-body max-h-50px py-2 bg-white " >
 
           <!-- <p class="text-primary"> <b>Descrição:</b></p> -->
           <p [title]="o.description" class="text-dark mb-0 small">
@@ -20,13 +20,13 @@
         </div>
         <div class="card-footer px-2 py-1 bg-white ">
           <div class="row align-items-center ">
-            <div class="col-5 small text-collapse ">
+            <div class="col-5 small text-collapse " tooltip="Category">
               <span class="text-{{o.category.key}}  fa fa-circle"></span>
               <span [title]="o.category.name">
                 {{o.category.name}}
               </span>
             </div>
-            <div class="col-5 text-collapse ">
+            <div class="col-5 text-collapse "tooltip="Status">
               <span class="badge badge-{{o.status.key}}">
                 <span [title]="o.status.name">
                   {{o.status.name}}
@@ -34,7 +34,7 @@
               </span>
             </div>
             <div class="col-2 ">
-              <a [routerLink]="['info', o._id]">
+              <a >
                 <i class="fas fa-search-plus text-secondary"></i>
 
               </a>

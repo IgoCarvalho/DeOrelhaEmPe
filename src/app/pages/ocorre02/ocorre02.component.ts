@@ -256,7 +256,17 @@ export class Ocorre02Component implements OnInit {
       ],
       flyTo: false,
       placeholder: 'Endereço',
-      marker: false
+      marker: false,
+      filter: function (item) {
+        // returns true if item contains New South Wales region
+        return item.context.map(function (i) {
+        // id is in the form {index}.{id} per https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
+        // this example attempts to find the `region` named `New South Wales`
+        return (i.id.split('.').shift() === 'place' && i.text === 'Quixadá');
+        }).reduce(function (acc, cur) {
+        return acc || cur;
+        });
+        },
     });
 
 

@@ -53,6 +53,9 @@
       transition: all .4s;
   }
   .filx-label{
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       text-transform: uppercase;
 
@@ -60,6 +63,12 @@
       border: $border-width dashed rgba($primary, .6);
       border-radius: $border-radius;
       transition: all .4s;
+
+      span{
+        background-color: #CCDFDD;
+        padding: 5px;
+        border-radius: 3px
+      }
   }
   input {
       position: absolute;

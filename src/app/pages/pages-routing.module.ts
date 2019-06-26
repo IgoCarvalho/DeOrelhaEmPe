@@ -13,6 +13,7 @@ import { CczComplaintsComponent } from '../components/ccz-complaints/ccz-complai
 import { AuthGuard } from '../guards/auth.guard';
 import { AdmGuardService } from '../guards/adm-guard.service';
 import { InicioComponent } from '../components/inicio/inicio.component';
+import { AcoesComponent } from './ccz/acoes/acoes.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, 
@@ -20,14 +21,16 @@ const routes: Routes = [
       {path: 'info/:id', component: CardComponent},
       {path: '', component: MapComponent},
     ]},
-    {path: '1',canActivate: [AuthGuard] ,component: Ocorre01Component},
+    {path: 'mapa' ,component: MapComponent},
     {path: 'ocorrencia',canActivate: [AuthGuard] , component: Ocorre02Component},
     {path: '3',canActivate: [AuthGuard] , component: Ocorre03Component},
     {path: 'ccz',canActivate: [AuthGuard, AdmGuardService] , component: CczComponent, 
     children: [
-      {path: '', component: CczComplaintsComponent},
+      {path: 'denuncias', component: CczComplaintsComponent},
       {path: 'info/:id', component: CardComponent},
-      {path: 'map', component: MapComponent}
+      {path: 'acoes', component: AcoesComponent},
+      {path: 'map', component: MapComponent},
+      {path: '', redirectTo: 'denuncias', pathMatch: 'full'},
     ]},
 ];
 

@@ -18,7 +18,7 @@
       </div>
       <div class="card-body bg-light ">
         <div class="row">
-          <div [class]="mostrar? 'col-6': 'col-12'">
+          <div [class]="(data.category.key != 'maus-tratos' || mostrar || user._id == data.user._id)? 'col-6': 'col-12'">
             <p class="text-primary"> <b>Descrição:</b></p>
             <p class="text-dark">
               {{ data.description }}
@@ -26,7 +26,7 @@
 
           </div>
           <!-- adm interface -->
-          <div *ngIf="mostrar; else userI" class="col-6">
+          <div *ngIf="data.category.key != 'maus-tratos' || mostrar || user._id == data.user._id; else userI" class="col-6">
             <div class="row">
               <p class="text-primary">
                 <b>Categoria: </b>
@@ -76,23 +76,16 @@
       </div>
     </ng-template>
   </div>
-  <div class="container feedback mb-3 bg-white rounded shadow-sm" [ngClass]="{'p-3 h-auto': mostrarFeed}">
-    <div class="m-3">
-      <h5>Comentário</h5>
-      <textarea class="form-control w-50" id="exampleFormControlTextarea1"></textarea>
-    </div>
-    <div class="m-3 w-50">
-      <h5>Status</h5>
-      <app-select></app-select>
-    </div>
-    <div class="d-flex justify-content-center w-100">
-      <app-button><b>Enviar</b></app-button>
-    </div>
-  </div>
+  
 
   <div class="card border-0 mb-3">
-    <div class="card-header bg-white">
-      <h5 class="text-primary mb-0">Linha do tempo</h5>
+    <div class="card-header bg-white d-inline-block">
+      <h5 class="text-primary mb-0 mr-2 d-inline">Linha do tempo</h5>
+      <span class="badge badge-pill badge-nao-lido">Não lido</span>
+      <span class="badge badge-pill badge-recebido">Recebido</span>
+      <span class="badge badge-pill badge-triagem">Triagem</span>
+      <span class="badge badge-pill badge-em-andamento">Em andamento</span>
+      <span class="badge badge-pill badge-resolvido">Resolvido</span>
     </div>
     <div *ngIf="loading || !data; else timeLine" class="p-3 d-flex">
       <span class="spinner-border text-primary " style="height: 1.5rem; width: 1.5rem" role="status"
@@ -106,7 +99,7 @@
         <li *ngFor="let s of data.timeLine" class="list-group-item text-dark">
           <span class="badge badge-pill badge-{{s.status.key}}">{{s.status.name}}</span>
           {{s.description}}
-          <span class="float-right">{{s.date | date}}</span>
+          <span class="float-right">{{s.date | date:"d/M/yyyy"}}</span>
         </li>
 
       </ul>
@@ -140,25 +133,21 @@
             Sem comentarios.
           </li>
         </ul>
+
       </ng-template>
-    </ng-template>
-    <div class="card-footer bg-white px-2 text-right" [ngClass]="{'py-4': mostrar}">
-      <div *ngIf="!mostrar">
-        <app-button (click)="isOpen = !isOpen"><b>Adicionar Comentário</b></app-button>
-        <div *ngIf="isOpen" class="pb-2"></div>
-        <accordion>
-          <accordion-group [isOpen]="isOpen" panelClass="bg-light">
-            <form #c="ngForm" (ngSubmit)="addComent(c)">
-              <div class="form-group">
-                <textarea class="form-control" name="coment" placeholder="Escreva algo " rows="3"
-                  #coment="ngModel" ngModel required></textarea>
-              </div>
-              <button class="btnx btnx-primary"> Enviar </button>
-            </form>
-          </accordion-group>
-        </accordion>
+      <div class="card-footer bg-white px-2 py-3 text-right" [ngClass]="{'py-4': mostrar}">
+        <div *ngIf="!mostrar">
+          <form #c="ngForm" (ngSubmit)="addComent(c)">
+            <div class="form-group">
+              <textarea class="form-control" name="coment" placeholder="Adicione um comentario" rows="3"
+                #coment="ngModel" ngModel required></textarea>
+            </div>
+            <button class="btnx btnx-primary"> Enviar </button>
+          </form>
+        </div>
       </div>
-    </div>
+    </ng-template>
+
   </div>
 
 </div>
