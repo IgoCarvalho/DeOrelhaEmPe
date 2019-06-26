@@ -1,7 +1,7 @@
 <div class="container p-5">
   <div *ngIf="data | async as data$" class="container p-4">
     <div *ngFor="let o of data$" class="container d-flex align-items-center justify-content-between shadow-sm text-light p-3 m-3 rounded"
-    [routerLink]="['info', o._id]">
+    [routerLink]="['/ccz/info', o._id]">
       <div>
         <div class="rounded-circle foto bg-primary"></div>
         <b>{{o.user.name}}</b>

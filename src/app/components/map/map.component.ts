@@ -69,6 +69,8 @@ export class MapComponent implements OnInit {
       zoom: 13
     });
 
+    map.addControl(new mapboxgl.NavigationControl());
+
     map.on('load', () => {
       // add a clustered GeoJSON source for powerplant
       ref.map(d => {

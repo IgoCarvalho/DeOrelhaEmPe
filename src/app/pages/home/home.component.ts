@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +10,22 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   toggle = false;
+  isVisible = true;
   
-  constructor() { }
+  constructor(
+    private route: Router,
+    private location: Location
+  ) { }
 
   ngOnInit() {
     setTimeout(()=>{this.toggler()}, 300)
+    console.log(this.route)
+    this.route.url.includes('info')? this.isVisible = false: this.isVisible = true
+    this.route.events.subscribe(res=>{
+      let url = this.location.path();
+      url.includes('info')? this.isVisible = false: this.isVisible = true
+      
+    })
   }
 
   toggler(){

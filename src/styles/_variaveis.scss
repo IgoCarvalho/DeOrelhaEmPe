@@ -88,6 +88,7 @@ $theme-colors: map-merge(
     "light":      $light,
     "dark":       $dark,
     "primary-l":  $p-primary-l,
+    "secondary-l":  $p-secondary-l,
     "maus-tratos":$p-maus-tratos,
     "abandono":   $p-abandono,
     "nocivo-a-saude":$p-nocivo-a-saude,
@@ -116,7 +117,7 @@ $input-border-color: $primary;
 
 $custom-checkbox-indicator-border-radius: .25rem;
 
-$border-width: 2px;
+$border-width: 1px;
 
 $font-family-sans-serif:      Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 

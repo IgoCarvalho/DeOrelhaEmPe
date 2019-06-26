@@ -5,6 +5,7 @@ import { OccurrenceService } from 'src/app/services/occurrence.service';
 import { delay, map } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-card',
@@ -22,6 +23,8 @@ export class CardComponent implements OnInit {
   data: any;
   @ViewChild('f') form: NgForm;
 
+  user;
+
   selectcItens = [
     { key: 'recebido', name: 'Recebido' },
     { key: 'triagem', name: 'Triagem' },
@@ -34,12 +37,14 @@ export class CardComponent implements OnInit {
     private router: Router,
     private occDataService: OccurrenceDataService,
     private occService: OccurrenceService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private authService: AuthService
 
   ) { }
 
   ngOnInit() {
     this.loading = true
+    this.user = this.authService.getUser()
     this.activatedRoute.params.pipe(delay(200)).subscribe(param => {
       this.id = param['id']
       // alert(this.id)
@@ -50,7 +55,9 @@ export class CardComponent implements OnInit {
     });
     console.log('card xxx')
     this.occDataService.oneData.subscribe((res: any) => {
-      console.log('acc', res)
+      
+      res? console.log('acc', res.user): console.log('accbb', res)
+      console.log('xxa', this.user)
       this.data = res
       this.loading = false
     })
