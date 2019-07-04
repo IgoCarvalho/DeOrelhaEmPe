@@ -5,7 +5,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { ToastrModule } from 'ngx-toastr';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
  
-const config: SocketIoConfig = { url: 'http://localhost:3003', options: {} };
+const config: SocketIoConfig = { url: environment.base_url, options: {} };
 
 // Modulos
 import { ComponentsModule } from './components/components.module';
