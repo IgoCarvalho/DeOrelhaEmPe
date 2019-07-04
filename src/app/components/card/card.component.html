@@ -10,15 +10,16 @@
       </div>
     </div>
     <ng-template #card>
-      <div class="card-header bg-white p-2 d-flex align-items-center">
-        <button class="btn btn-outline-primary bg-white mr-2" type="button" (click)="back()">
-          <i class="text-secondary fa fa-arrow-left"></i>
+      <div class="card-header bg-white p-2 d-flex justify-content-between align-items-center">
+        <h5 class="card-tittle text-primary mb-0 ml-2">{{ data.title }}</h5>
+        <button class="btn btn-outline-primary bg-white mr-2 border-2" type="button" (click)="back()">
+          <i class="text-secondary fa fa-times"></i>
         </button>
-        <h5 class="card-tittle text-primary mb-0">{{ data.title }}</h5>
       </div>
       <div class="card-body bg-light ">
         <div class="row">
-          <div [class]="(data.category.key != 'maus-tratos' || mostrar || user._id == data.user._id)? 'col-6': 'col-12'">
+          <div
+            [class]="(data.category.key != 'maus-tratos' || mostrar || user?._id == data.user._id)? 'col-6': 'col-12'">
             <p class="text-primary"> <b>Descrição:</b></p>
             <p class="text-dark">
               {{ data.description }}
@@ -26,7 +27,8 @@
 
           </div>
           <!-- adm interface -->
-          <div *ngIf="data.category.key != 'maus-tratos' || mostrar || user._id == data.user._id; else userI" class="col-6">
+          <div *ngIf="data.category.key != 'maus-tratos' || mostrar || user?._id == data.user._id; else userI"
+            class="col-6">
             <div class="row">
               <p class="text-primary">
                 <b>Categoria: </b>
@@ -58,7 +60,7 @@
           <app-button [type]="'secondary'" (click)="isOpen = !isOpen"><b>Enviar Feedback</b></app-button>
           <div *ngIf="isOpen" class="pb-2"></div>
           <accordion>
-            <accordion-group [isOpen]="isOpen" panelClass="bg-light">
+            <accordion-group [isOpen]="isOpen" panelClass="bg-light xxx">
               <form #f="ngForm" (ngSubmit)="submit(f)">
                 <div class="form-group">
                   <input class="d-none" type="text" name="status" #status="ngModel" ngModel required>
@@ -76,30 +78,32 @@
       </div>
     </ng-template>
   </div>
-  
+
 
   <div class="card border-0 mb-3">
-    <div class="card-header bg-white d-inline-block">
-      <h5 class="text-primary mb-0 mr-2 d-inline">Linha do tempo</h5>
-      <span class="badge badge-pill badge-nao-lido">Não lido</span>
-      <span class="badge badge-pill badge-recebido">Recebido</span>
-      <span class="badge badge-pill badge-triagem">Triagem</span>
-      <span class="badge badge-pill badge-em-andamento">Em andamento</span>
-      <span class="badge badge-pill badge-resolvido">Resolvido</span>
-    </div>
     <div *ngIf="loading || !data; else timeLine" class="p-3 d-flex">
-      <span class="spinner-border text-primary " style="height: 1.5rem; width: 1.5rem" role="status"
-        aria-hidden="true"></span>
+      <div class="card-header bg-white d-flex align-items-center">
+        <span class="spinner-border text-primary " style="height: 1.5rem; width: 1.5rem" role="status"
+          aria-hidden="true"></span>
 
-      <h5 class="card-tittle text-primary ml-2 mb-0">Carregando...</h5>
+        <h5 class="card-tittle text-primary ml-2 mb-0">Carregando...</h5>
+      </div>
     </div>
     <ng-template #timeLine>
+      <div class="card-header bg-white d-flex">
+        <h5 class="text-primary mb-0 d-inline">Linha do tempo</h5>
+        <div *ngFor="let s of readStatus(data.status)" class="ml-2 d-flex align-items-center">
+          <span [ngClass]="s.ok?'badge-'+s.key+'':'badge-falta'"  class="badge badge-pill ">{{s.name}}</span>
+          <span *ngIf="s.ok" class=" text-primary-l fas fa-check-circle "></span>
 
+        </div>
+
+      </div>
       <ul class="list-group list-group-flush">
         <li *ngFor="let s of data.timeLine" class="list-group-item text-dark">
           <span class="badge badge-pill badge-{{s.status.key}}">{{s.status.name}}</span>
           {{s.description}}
-          <span class="float-right">{{s.date | date:"d/M/yyyy"}}</span>
+          <span class="float-right">{{s.date | date:"dd/MM/yyyy"}}</span>
         </li>
 
       </ul>
@@ -124,7 +128,7 @@
       <ul *ngIf="data.coments.length > 0; else empty" class="list-group list-group-flush">
         <li *ngFor="let c of data.coments" class="list-group-item text-dark d-flex justify-content-between">
           <span> {{c.text}} </span>
-          <span> {{c.date | date}} </span>
+          <span> {{c.date | date:"dd/MM/yyyy"}} </span>
         </li>
       </ul>
       <ng-template #empty>

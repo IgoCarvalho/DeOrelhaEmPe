@@ -15,29 +15,29 @@
         <a class="nav-link" routerLink="/home">Inicio</a>
       </li>
       <li class="nav-item " routerLinkActive="active">
-        <a class="nav-link" routerLink="#">Orgãos</a>
+        <a class="nav-link" routerLink="/orgaos">Orgãos</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="/mapa">Mapa</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="[{ outlets: { popup: ['home'] } }]">Leis</a>
+        <a class="nav-link" routerLink="/leis">Leis</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" [routerLink]="[{ outlets: { popup: ['home'] } }]">Ações</a>
+        <a class="nav-link" routerLink="/acoes">Ações</a>
       </li>
       <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" href="#" routerLink="/mapa">Dúvidas Frequentes</a>
+        <a class="nav-link" routerLink="/duvidas">Dúvidas Frequentes</a>
       </li>
     </ul>
 
-    <ul *ngIf="!authService.isLoged()" class="navbar-nav ml-auto">
+    <ul  class="navbar-nav ml-auto">
       <li class="nav-item ">
         <app-button routerLink="/ocorrencia" type="danger"> Denunciar </app-button>
       </li>
     </ul>
 
-    <ul *ngIf="authService.isLoged()" class="navbar-nav ml-auto">
+    <ul *ngIf="authService.isLoged()" class="navbar-nav ml-3">
       <!-- Notificacoes -->
 
       <div dropdown class=" nav-item dropdown d-flex align-items-center">
@@ -46,18 +46,18 @@
           <i class="fas fa-bell "></i>
           <span *ngIf="notifications.length >0 && count >0" class="badge badge-danger" > {{count}} </span>
         </a>
-        <div *dropdownMenu role="menu" class="dropdown-menu dropdown-menu-right animate slideIn"
+        <div *dropdownMenu role="menu" class="z-fix dropdown-menu dropdown-menu-right animate slideIn"
           aria-labelledby="navbarDropdown">
           <span *ngIf="notifications">
-            <div *ngFor="let n of notifications" class="bg-light dropdown-item border-bottom d-flex align-items-center">
+            <div *ngFor="let n of notifications" [routerLink]="['/home/info',n.id]" class="cursor bg-light dropdown-item border-bottom d-flex align-items-center">
               <div class="mr-3">
-                <div class="icon-circle bg-primary">
-                  <i class="fas fa-file-alt text-white"></i>
+                <div class="icon-circle ">
+                  <i class="fas fa-exclamation-circle text-primary"></i>
                 </div>
               </div>
               <div>
-                <div class="small text-gray-500"> {{ n.title }} </div>
-                <a class="font-weight-bold" routerLink="/home/info/{{n.id}}"> {{ n.text }} </a>
+                <div class=" text-gray-500"> {{ n.title }} </div>
+                <a class="small" > {{ n.text }} </a>
               </div>
             </div>
           </span>
@@ -82,7 +82,7 @@
             height="40" class="rounded-circle">
         </a>
         <div *dropdownMenu role="menu"
-          class="dropdown-menu dropdown-menu-right custom-dropdown-menu text-center animate slideIn"
+          class="z-fix dropdown-menu dropdown-menu-right custom-dropdown-menu text-center animate slideIn"
           aria-labelledby="navbarDropdown">
 
           <div role="menuitem" class="dropdown-item"> Configuracoes </div>

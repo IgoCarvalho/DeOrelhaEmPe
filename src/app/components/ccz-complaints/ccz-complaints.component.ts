@@ -19,7 +19,7 @@ export class CczComplaintsComponent implements OnInit {
   ngOnInit() {
     this.data = this.occDataService.currentOccurrence
     console.log(this.data)
-    this.not.new().subscribe((res)=>{
+    this.not.newOcc().subscribe((res)=>{
       console.log('NOVA', res)
       this.occDataService.addData(res)
     })

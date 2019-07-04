@@ -1,6 +1,7 @@
 
 .card-active{
-    box-shadow: 0px 0px 0px 1112px rgba(0,0,0,.5);
+    border: 2px solid #E98F2B !important;
+    box-shadow: 0px 0px 0px 1112px rgba(0,0,0,.25);
     z-index: 1;
     pointer-events: none 
 }
@@ -17,7 +18,7 @@
 .cursor{
     cursor: pointer;
     &:hover{
-        box-shadow: 0px 2px 7px 1px rgba(0, 0, 0, 0.5);
-        transform: translate(0px, -2px)
+        box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, 0.5);
+        transform: translate(0px, -1px)
     }
 }

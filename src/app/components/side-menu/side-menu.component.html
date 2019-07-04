@@ -1,4 +1,4 @@
-<div class="side-menu row px-3 bg-primary-l h-100 flex-column flex-nowrap ">
+<div class="side-menu row px-3 bg-primary-l h-100 flex-column flex-nowrap " [ngClass]="{' animation': !isactive}">
   <div class="toggler-content">
     <div (click)="toggle()" class="menu-toggler px-2 bg-primary-l text-secondary" [ngClass]="{' animation': !isactive}">
       <i class="fas fa-angle-right fa-2x"></i>

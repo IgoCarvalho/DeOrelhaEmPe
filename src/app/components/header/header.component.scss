@@ -17,3 +17,14 @@
         max-width: 8rem;
     }
 }
+
+.z-fix{
+    z-index: 11111;
+}
+
+.cursor{
+    cursor: pointer;
+    &:hover{
+        color: $primary
+    }
+}

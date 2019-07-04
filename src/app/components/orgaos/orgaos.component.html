@@ -1,0 +1,73 @@
+<div class="container-fluid w-100 vh-100 overflow-hidden p-0 text-center text-light bg-primary"
+  [ngClass]="{'mt-5': margin}">
+  <h1 class="pt-5 font-weight-bold">Quais os tipos de crimes podem ser denunciados?</h1>
+  <h3 class="p-4">O Centro de Controle de Zoonoses (CCZ) trabalha em parceria com outros órgãos, de acordo com o tipo
+    de denúncia o CCZ resolve o caso ou encaminha para outro órgão, abaixo estão listados os tipos de crimes que podem
+    ser denunciados com os respectivos órgãos responsáveis por atuar na resolução de cada caso.</h3>
+  <div class="container p-3 h-50 d-flex align-items-center justify-content-center">
+    <div class="position-relative h-100 col-3 bg-secondary m-4 d-inline-block rounded text-center"
+      (click)="openModal(maustratos)">
+      <!-- <div class="cat d-inline-block m-3 maus-tratos border border-white"></div> -->
+      <img class="cat my-3" src="../../../assets/img/cachorro amarrado.png" alt="">
+      <h3 class="font-weight-bold">Maus tratos</h3>
+      <p>CCZ</p>
+      <p>Delegacia</p>
+      <ng-template #maustratos class="mt-5">
+        <div class="modal-body rounded bg-secondary p-5 text-light text-center">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="font-weight-bold">Maus tratos</h3>
+          <p class="m-4">As denúncias podem ser feitas por boletim de ocorrência, pode ser registrado em qualquer
+            delegacia, Mas sabemos que muitas pessoas preferem não se identificar, diminuindo as denúncias em casos como
+            esse, para resolver esse problema o CCZ atua como intermediador da denúncia, diminuindo os transtornos que
+            as pessoas, podem ter ao fazê-la, para isso, as denúncias devem apresentar provas para que a polícia e o CCZ
+            atuem juntas na resolução desse problema.
+          </p>
+        </div>
+      </ng-template>
+    </div>
+    <div class="position-relative h-100 col-3 bg-secondary m-4 d-inline-block rounded text-center"
+      (click)="openModal(abandono)">
+      <!-- <div class="cat d-inline-block m-3 abandono border border-white"></div> -->
+      <img class="cat my-3" src="../../../assets/img/Ativo 2.png" alt="">
+
+      <h3 class="font-weight-bold">Abandono</h3>
+      <p>CCZ</p>
+      <p>Delegacia</p>
+      <p>SEDUMA</p>
+      <ng-template #abandono class="mt-5">
+        <div class="modal-body rounded bg-secondary p-5 text-light text-center">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="font-weight-bold">Abandono</h3>
+          <p class="m-4">O abandono, também é categorizado como maus-tratos e as denúncias com provas podem ser
+            encaminhadas a delegacia, ou com o intermédio do CCZ. As denúncias de abandono do sistema, sem prova,
+            ajudará para alimentar um mapa de abandono da cidade, que servirão, para visualização de dados, da população
+            e do CCZ.
+          </p>
+        </div>
+      </ng-template>
+    </div>
+    <div class="position-relative h-100 col-3 bg-secondary m-4 d-inline-block rounded text-center"
+      (click)="openModal(nocivo)">
+      <!-- <div class="cat d-inline-block m-3 nocivo border border-white"></div> -->
+      <img class="cat my-3" src="../../../assets/img/cachorro doente .png" alt="">
+
+      <h3 class="font-weight-bold">Nocivo à saúde</h3>
+      <p>CCZ</p>
+      <ng-template #nocivo class="mt-5">
+        <div class="modal-body rounded bg-secondary p-5 text-light text-center">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h3 class="font-weight-bold">Nocivo à saúde</h3>
+          <p class="m-4">Animais que aparentam doenças, infecções e etc.. devem ser encaminhados para serem ajudados
+            pelo CCZ o quanto antes.
+          </p>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

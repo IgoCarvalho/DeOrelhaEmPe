@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AcoesService } from 'src/app/services/acoes.service';
 
 @Component({
-  selector: 'app-acoes',
+  selector: 'app-ccz-acoes',
   templateUrl: './acoes.component.html',
   styleUrls: ['./acoes.component.scss']
 })
-export class AcoesComponent implements OnInit {
+export class AcoesCczComponent implements OnInit {
 
   acoes = []
 

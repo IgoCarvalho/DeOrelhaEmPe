@@ -40,10 +40,15 @@ import { CczFormComponent } from './log-forms/ccz-form/ccz-form.component';
 import { CczComplaintsComponent } from './ccz-complaints/ccz-complaints.component';
 import { ForDebugComponent } from './for-debug/for-debug.component';
 import { FilePreviewComponent } from './file-preview/file-preview.component';
+import { InicioComponent } from './inicio/inicio.component';
+import { OrgaosComponent } from './orgaos/orgaos.component';
+import { LeisComponent } from './leis/leis.component';
+import { FaqComponent } from './faq/faq.component';
+import { AcoesComponent } from './acoes/acoes.component';
 
 
 @NgModule({
-  declarations: [ComponentsComponent, ButtonComponent, HeaderComponent, FormComponent, DatePickerComponent, TipographyComponent, IconsComponent, ColorsComponent, BrandComponent, ButtonsComponent, CardComponent, SelectComponent, NotificationComponent, CarouselComponent, DialogModalComponent, GalleryComponent, LogFormsComponent, LoginFormComponent, RegisterFormComponent, SideMenuComponent, SideMenuCardComponent, HeaderInicialComponent, CardDesaComponent, CarouselMultilistComponent, MapComponent, CczFormComponent, CczComplaintsComponent, ForDebugComponent, FilePreviewComponent],
+  declarations: [ComponentsComponent, ButtonComponent, HeaderComponent, FormComponent, DatePickerComponent, TipographyComponent, IconsComponent, ColorsComponent, BrandComponent, ButtonsComponent, CardComponent, SelectComponent, NotificationComponent, CarouselComponent, DialogModalComponent, GalleryComponent, LogFormsComponent, LoginFormComponent, RegisterFormComponent, SideMenuComponent, SideMenuCardComponent, HeaderInicialComponent, CardDesaComponent, CarouselMultilistComponent, MapComponent, CczFormComponent, CczComplaintsComponent, ForDebugComponent, FilePreviewComponent, InicioComponent, OrgaosComponent, LeisComponent, FaqComponent, AcoesComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -69,7 +74,12 @@ import { FilePreviewComponent } from './file-preview/file-preview.component';
     CczComplaintsComponent,
     GalleryComponent,
     ForDebugComponent,
-    FilePreviewComponent
+    FilePreviewComponent,
+    InicioComponent,
+    OrgaosComponent, 
+    LeisComponent,
+    FaqComponent,
+    AcoesComponent
   ]
 })
 export class ComponentsModule { }

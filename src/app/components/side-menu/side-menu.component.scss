@@ -23,7 +23,7 @@
 }
 
 .has-search>.form-control-feedback{
-    padding-right: 2.375rem;
+    // padding-right: 2.375rem;
 }
 
 
@@ -47,6 +47,7 @@
 }
 
 .side-menu{
+    transition: 200ms;
     &:hover{
         .menu-toggler{
             opacity: 1;
@@ -97,7 +98,13 @@
 }
 
 
+.side-menu.animation{
+    transform: translateX(100%);
+    form{
+        opacity: 0;
+    }
 
+}
 // custom scholbar
 
 #style-2::-webkit-scrollbar-track

@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.notification.get().subscribe(res=>{
-      console.log(res)
+      console.log('nnewComent',res)
     })
     this.notification.post()
     this.notification.status().subscribe((res:any)=>{
@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
       let user = this.authService.getUser()
       console.log(user)
       this.count = 0
-      if(res.user == user._id){
+      if(res.user._id == user._id){
         let not = {
           text: 'Veja como esta o andamento de sua ocorrência',
           title: res.title,
