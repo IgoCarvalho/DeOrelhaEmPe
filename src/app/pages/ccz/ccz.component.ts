@@ -11,7 +11,7 @@ export class CczComponent implements OnInit {
 
   constructor(
     private occDataService: OccurrenceDataService,
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   ngOnInit() {

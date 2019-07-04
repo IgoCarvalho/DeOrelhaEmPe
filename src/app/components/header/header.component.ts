@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   count = 0
   
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private notification: NotificationService,
     private occDataService: OccurrenceDataService,
     private toaster: ToastrService
