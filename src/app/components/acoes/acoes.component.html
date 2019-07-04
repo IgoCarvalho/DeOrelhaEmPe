@@ -1,7 +1,7 @@
-<div class="container-fluid w-100 vh-100 p-0 bg-secondary align-items-center d-flex"
+<div class="container-fluid w-100 vh-100 p-0 bg-secondary"
 [ngClass]="{'mt-5': margin}">
-  <div class="h-100 p-4 d-inline-flex align-items-center justify-content-center">
-    <!-- <div class="p-5 bg-white"></div> -->
+  <!-- <div class="h-100 p-4 d-inline-flex align-items-center justify-content-center">
+    <div class="p-5 bg-white"></div>
     <img class="h-auto w-100" src="../../../assets/img/campanha.PNG" alt="">
   </div>
   <div class="w-50 h-auto d-inline-block text-light">
@@ -11,5 +11,19 @@
     composição eletrônica, permanecendo essencialmente inalterado. Foi popularizado nos anos 60 com o lançamento de
     folhas de Letraset contendo passagens de Lorem Ipsum, e mais recentemente com software de editoração eletrônica como
     Aldus PageMaker incluindo versões de Lorem Ipsum.
-  </div>
+  </div> -->
+  <carousel *ngIf="acoes" [showIndicators]="false" class="carousel">
+      <slide *ngFor="let a of acoes">
+          <div class="vh-100 p-4 d-flex align-items-center justify-content-center">
+              <div class="p-5 w-50">
+              <img class="h-auto w-100" [src]="a.image.url" alt="">
+            </div>
+            <div class="w-50 h-auto d-inline-block text-light">
+              {{a.description}}
+            </div>
+          </div>
+      </slide>
+      
+      
+  </carousel>
 </div>

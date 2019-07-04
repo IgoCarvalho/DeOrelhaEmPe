@@ -62,7 +62,7 @@
   </div>
   <div class="form-group">
     <label for="password-verify">Confirmar Senha</label>
-    <small *ngIf="(confirmSenha.value !== senha.value) && rForm.submitted" class="float-right text-danger">Senha invalida</small>
+    <!-- <small *ngIf="(confirmSenha.value !== senha.value) && rForm.submitted" class="float-right text-danger">Senha invalida</small> -->
     <small *ngIf="(confirmSenha.value !== senha.value) && rForm.submitted" class="float-right text-danger">Senha invalida</small>
     <input class="form-control" id="password-verify" placeholder="Confirmar Senha" type="password" name="password-verify"
     [ngClass]="{

@@ -11,7 +11,7 @@ import { delay, tap, skip, takeUntil } from 'rxjs/operators';
 })
 export class SideMenuComponent implements OnInit, OnDestroy {
 
-  isactive = true;
+  isactive = false;
   @Output() toggler: EventEmitter<any> = new EventEmitter();
   
   array: any[] = ['1','2','3','4','5'];
@@ -28,6 +28,7 @@ export class SideMenuComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    setTimeout(()=>{this.isactive = !this.isactive;}, 320)
     this.occDataService.currentOccurrence.pipe(
       takeUntil(this.destroy$)
     ).subscribe((res)=>{

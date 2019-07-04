@@ -43,12 +43,12 @@ import { FilePreviewComponent } from './file-preview/file-preview.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { OrgaosComponent } from './orgaos/orgaos.component';
 import { LeisComponent } from './leis/leis.component';
-import { AcoesComponent } from './acoes/acoes.component';
 import { FaqComponent } from './faq/faq.component';
-import { MapaComponent } from './mapa/mapa.component';
+import { AcoesComponent } from './acoes/acoes.component';
+
 
 @NgModule({
-  declarations: [ComponentsComponent, ButtonComponent, HeaderComponent, FormComponent, DatePickerComponent, TipographyComponent, IconsComponent, ColorsComponent, BrandComponent, ButtonsComponent, CardComponent, SelectComponent, NotificationComponent, CarouselComponent, DialogModalComponent, GalleryComponent, LogFormsComponent, LoginFormComponent, RegisterFormComponent, SideMenuComponent, SideMenuCardComponent, HeaderInicialComponent, CardDesaComponent, CarouselMultilistComponent, MapComponent, CczFormComponent, CczComplaintsComponent, InicioComponent, OrgaosComponent, LeisComponent, AcoesComponent, FaqComponent, MapaComponent],
+  declarations: [ComponentsComponent, ButtonComponent, HeaderComponent, FormComponent, DatePickerComponent, TipographyComponent, IconsComponent, ColorsComponent, BrandComponent, ButtonsComponent, CardComponent, SelectComponent, NotificationComponent, CarouselComponent, DialogModalComponent, GalleryComponent, LogFormsComponent, LoginFormComponent, RegisterFormComponent, SideMenuComponent, SideMenuCardComponent, HeaderInicialComponent, CardDesaComponent, CarouselMultilistComponent, MapComponent, CczFormComponent, CczComplaintsComponent, ForDebugComponent, FilePreviewComponent, InicioComponent, OrgaosComponent, LeisComponent, FaqComponent, AcoesComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -75,13 +75,11 @@ import { MapaComponent } from './mapa/mapa.component';
     GalleryComponent,
     ForDebugComponent,
     FilePreviewComponent,
-    LoginFormComponent,
     InicioComponent,
-    OrgaosComponent,
+    OrgaosComponent, 
     LeisComponent,
-    AcoesComponent, 
     FaqComponent,
-    MapaComponent
+    AcoesComponent
   ]
 })
 export class ComponentsModule { }

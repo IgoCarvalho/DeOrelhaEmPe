@@ -8,12 +8,6 @@ import { ComponentsComponent } from './components/components.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ApresentationComponent } from './pages/apresentation/apresentation.component';
 import { HeaderComponent } from './components/header/header.component';
-import { InicioComponent } from './components/inicio/inicio.component';
-import { OrgaosComponent } from './components/orgaos/orgaos.component';
-import { LeisComponent } from './components/leis/leis.component';
-import { MapaComponent } from './components/mapa/mapa.component';
-import { FaqComponent } from './components/faq/faq.component';
-import { AcoesComponent } from './components/acoes/acoes.component';
 
 const routes: Routes = [
   // {path: 'home', component: HomeComponent},
@@ -31,13 +25,6 @@ const routes: Routes = [
     component: ComponentsComponent,
     outlet: 'popup'
   },
-  {path: 'orgaos', component: OrgaosComponent},
-  {path: 'leis', component: LeisComponent},
-  {path: 'mapa', component: MapaComponent},
-  {path: 'acoes', component: AcoesComponent},
-  {path: 'faq', component: FaqComponent},
-  {path: '', component: ApresentationComponent, 
-  children: [{path: 'inicio', component: InicioComponent}]}
 
 ];
 

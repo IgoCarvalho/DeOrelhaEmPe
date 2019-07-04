@@ -9,18 +9,18 @@ export class NotificationService {
   constructor(private socket: Socket) { }
 
   get(){
-    return this.socket.fromEvent('coment')
+    return this.socket.fromEvent('newComent')
   }
 
   post(){
-    this.socket.emit('igo', {name: 'wsvsd'})
+    this.socket.emit('igo', JSON.stringify({name: 'wsvsd'}))
   }
 
   status(){
     return this.socket.fromEvent('updateStatus')
   }
 
-  new(){
+  newOcc(){
     return this.socket.fromEvent('newOccurrence')
   }
 }

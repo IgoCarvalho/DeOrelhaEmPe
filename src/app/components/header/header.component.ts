@@ -3,7 +3,6 @@ import { AuthService } from 'src/app/services/auth.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { OccurrenceDataService } from 'src/app/services/occurrence-data.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +13,6 @@ export class HeaderComponent implements OnInit {
 
   notifications: any[] = [];
   count = 0
-  fixo = false;
   
   constructor(
     private authService: AuthService,
@@ -25,7 +23,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.notification.get().subscribe(res=>{
-      console.log(res)
+      console.log('nnewComent',res)
     })
     this.notification.post()
     this.notification.status().subscribe((res:any)=>{
@@ -33,7 +31,7 @@ export class HeaderComponent implements OnInit {
       let user = this.authService.getUser()
       console.log(user)
       this.count = 0
-      if(res.user == user._id){
+      if(res.user._id == user._id){
         let not = {
           text: 'Veja como esta o andamento de sua ocorrência',
           title: res.title,

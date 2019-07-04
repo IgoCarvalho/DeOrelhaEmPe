@@ -1,6 +1,9 @@
 .mr--3{
-    margin-right: -25%;
+    // margin-right: -25%;
+    max-width: 10px;
+    overflow-x: hidden;
+
 }
 #sidebar-wapper{
-    transition: margin .25s ease-out
+    transition: .35s ease-out;
 }

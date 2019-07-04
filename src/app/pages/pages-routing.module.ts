@@ -12,8 +12,11 @@ import { CczComponent } from './ccz/ccz.component';
 import { CczComplaintsComponent } from '../components/ccz-complaints/ccz-complaints.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { AdmGuardService } from '../guards/adm-guard.service';
-import { InicioComponent } from '../components/inicio/inicio.component';
-import { AcoesComponent } from './ccz/acoes/acoes.component';
+import { AcoesCczComponent } from './ccz/acoes/acoes.component';
+import { OrgaosComponent } from '../components/orgaos/orgaos.component';
+import { LeisComponent } from '../components/leis/leis.component';
+import { AcoesComponent } from '../components/acoes/acoes.component';
+import { FaqComponent } from '../components/faq/faq.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, 
@@ -21,14 +24,19 @@ const routes: Routes = [
       {path: 'info/:id', component: CardComponent},
       {path: '', component: MapComponent},
     ]},
+
+    {path: 'orgaos' ,component: OrgaosComponent},
     {path: 'mapa' ,component: MapComponent},
+    {path: 'leis' ,component: LeisComponent},
+    {path: 'acoes' ,component: AcoesComponent},
+    {path: 'duvidas' ,component: FaqComponent},
     {path: 'ocorrencia',canActivate: [AuthGuard] , component: Ocorre02Component},
     {path: '3',canActivate: [AuthGuard] , component: Ocorre03Component},
     {path: 'ccz',canActivate: [AuthGuard, AdmGuardService] , component: CczComponent, 
     children: [
       {path: 'denuncias', component: CczComplaintsComponent},
       {path: 'info/:id', component: CardComponent},
-      {path: 'acoes', component: AcoesComponent},
+      {path: 'acoes', component: AcoesCczComponent},
       {path: 'map', component: MapComponent},
       {path: '', redirectTo: 'denuncias', pathMatch: 'full'},
     ]},

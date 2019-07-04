@@ -20,7 +20,7 @@
     <div #bo class="modal-body p-1">
       <carousel  #car [interval]="false"  *ngIf="images">
           <slide [id]="i" *ngFor="let img of images, index as i">
-            <img [src]="img" class="img-responsive center-block rounded" alt="Random first slide">
+            <img [src]="img.url" class="img-responsive center-block rounded" [alt]="img.name">
             
           </slide>
           

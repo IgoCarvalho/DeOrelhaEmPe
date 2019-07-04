@@ -32,6 +32,14 @@ export class CardComponent implements OnInit {
     { key: 'resolvido', name: 'Resolvido' },
   ]
 
+  timeLie:any[] = [
+    { key: 'nao-lido', name: 'Não lido' },
+    { key: 'recebido', name: 'Recebido' },
+    { key: 'triagem', name: 'Triagem' },
+    { key: 'em-andamento', name: 'Em andamento' },
+    { key: 'resolvido', name: 'Resolvido' },
+  ]
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -62,7 +70,7 @@ export class CardComponent implements OnInit {
       this.loading = false
     })
 
-
+    // this.readStatus()
   }
 
 
@@ -83,8 +91,10 @@ export class CardComponent implements OnInit {
 
     this.occService.updateStatus(up).subscribe(res => {
       // alert('status atualizado')
+      console.log('xacccccc',res)
       this.toast.success('status atualizado com sucesso', 'Status')
       this.occDataService.setOneData(res)
+      form.onReset()
 
     })
   }
@@ -113,6 +123,25 @@ export class CardComponent implements OnInit {
 
   back() {
     this.router.navigate(['../../'], { relativeTo: this.activatedRoute });
+  }
+
+  readStatus(a){
+    // let a = { key: 'recebido', name: 'Recebido' };
+    let muda = true
+    for(let s of this.timeLie){
+      if(muda){
+        if(s.key == a.key){
+          muda = false
+        }
+        s.ok = true
+      }else{
+        s.ok = false
+
+      }
+    }
+    console.log(this.timeLie)
+    return this.timeLie
+
   }
 
 }
