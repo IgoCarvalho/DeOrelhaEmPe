@@ -37,11 +37,12 @@ $p-neutro: #7e7e7e;
 $p-maus-tratos: #e74054;
 $p-abandono: #FFD21F;
 $p-nocivo-a-saude: #E98F2B;
-$p-nao-lido: #bdbdbd;
+$p-nao-lido: #8a8a8a;
 $p-recebido: #40AAE7;
 $p-triagem: #9440E7;
 $p-em-andamento: #1B720A;
 $p-resolvido: #67F518;
+$p-falta: #bdbdbd;
 
 
 $primary:       $p-primary !default;
@@ -96,7 +97,8 @@ $theme-colors: map-merge(
     "recebido":   $p-recebido,
     "triagem":    $p-triagem,
     "em-andamento":$p-em-andamento,
-    "resolvido":  $p-resolvido
+    "resolvido":  $p-resolvido,
+    "falta":  $p-falta
   ),
   $theme-colors
 );
