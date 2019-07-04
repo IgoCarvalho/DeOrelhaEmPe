@@ -1,14 +1,13 @@
-@import '~src/styles/_variaveis.scss';
 
-.navbar-nav {
-    .nav-link{
-        padding: 0 .5rem;
-    }
-    .active > .nav-link{
-        background-color: $secondary;
-        border-radius: $border-radius;
-    }
-}
+// .navbar-nav {
+//     .nav-link{
+//         padding: 0 .5rem;
+//     }
+//     .active > .nav-link{
+//         background-color: $secondary;
+//         border-radius: $border-radius;
+//     }
+// }
 
 .navbar-brand{
     img{
