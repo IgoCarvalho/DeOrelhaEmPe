@@ -1,0 +1,88 @@
+
+.btnx {
+    display: inline-block;
+    font-weight: 400;
+    cursor: pointer;
+    // max-height: 36px;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: none;
+    background-color: transparent;
+    padding: 0.375rem 0.75rem;
+    text-transform: uppercase;
+    min-width: 8rem;
+    margin-right: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.5;
+    border-radius: 0.5rem;
+    outline: none !important;
+    transition: color 0.15s;
+    @include btn-shadow(white);
+    // &-primary {
+    //   @include btn-shadow($primary);
+    // }
+    // &-secondary {
+    //   @include btn-shadow($secondary);
+    // }
+    // &-danger {
+    //     @include btn-shadow($danger)
+    // }
+    // &-info {
+    //     @include btn-shadow($info)
+    // }
+
+    // social
+    &-facebook{
+        @include btn-shadow($social-facebook);
+        min-width: 40px;
+        &-outline{
+            @include btn-shadow-outline($social-facebook);
+            min-width: 40px;
+        }
+    }
+    &-google{
+        @include btn-shadow($social-google);
+        min-width: 40px;
+        &-outline{
+            @include btn-shadow-outline($social-google);
+            min-width: 40px;
+        }
+    }
+    &-github{
+        @include btn-shadow($social-github);
+        min-width: 40px;
+        &-outline{
+            @include btn-shadow-outline($social-github);
+            min-width: 40px;
+        }
+    }
+
+  }
+
+@each $color, $value in $theme-colors {
+    .btnx-#{$color}-outline {
+        @include btn-shadow-outline($value);
+    }
+}
+
+@each $color, $value in $theme-colors {
+    .btnx-#{$color} {
+        @include btn-shadow($value);
+    }
+}
+
+// floatinf=g buttin
+
+.float{
+	position:absolute;
+	top:40px;
+	left:40px;
+	
+}
+
+.link-unstyled:hover{
+    text-decoration: none !important;
+}

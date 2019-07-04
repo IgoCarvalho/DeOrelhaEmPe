@@ -1,0 +1,69 @@
+@import './variaveis';
+
+// mixins
+@import './mixins/buttons';
+
+// components
+@import './buttons';
+@import './forms';
+@import './dropdown';
+
+
+
+
+
+@import '~bootstrap/scss/bootstrap';
+
+html,body{
+    background-color: $light;
+}
+
+.text-collapse{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.mapboxgl-ctrl-geocoder-lg { 
+    min-width:100%;
+    width: 100% !important;
+    max-width: 100% !important; 
+    box-shadow: none !important;
+}
+
+.panel{
+    border: none;
+}
+.xxx .panel-heading{
+    display: none;
+}
+
+.xxx .slide>a{
+    display: none
+}
+.fix-height{
+    height: calc(100vh - 66px);
+}
+.panel-heading, .card{
+    background-color: #e28935;
+    border: none;
+    margin: 10px;
+}
+.btn-link{
+    color: white;
+}
+.btn-link:hover{
+    color: rgb(201, 201, 201);
+}
+
+.mike .panel-heading, .mike.card{
+    background-color: #e28935;
+    border: none;
+    margin: 10px;
+    .btn-link{
+        color: white;
+    }
+    .btn-link:hover{
+        color: rgb(201, 201, 201);
+    } 
+}
