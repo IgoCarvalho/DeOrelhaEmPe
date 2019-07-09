@@ -10,13 +10,9 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 export class OrgaosComponent implements OnInit {
   margin = false;
   modalRef: BsModalRef;
-  constructor(private router: Router, private modalService: BsModalService) { }
+  constructor(private modalService: BsModalService) { }
 
   ngOnInit() {
-    if(this.router.url == "/orgaos"){
-      console.log(this.router.url);
-      this.margin = true;
-    }
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);

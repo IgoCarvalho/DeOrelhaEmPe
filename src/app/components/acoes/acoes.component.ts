@@ -13,15 +13,10 @@ export class AcoesComponent implements OnInit {
   acoes;
   
   constructor(
-    private router: Router,
     private acoesService: AcoesService
   ) { }
 
   ngOnInit() {
-    if(this.router.url == "/acoes"){
-      console.log(this.router.url);
-      this.margin = true;
-    }
     this.acoesService.getAll().subscribe(res=>{
       this.acoes = res
     })
